@@ -1,0 +1,18 @@
+{
+    "links": [
+        {
+            "label":"Discover",
+            "href":"/discover"
+        },
+
+        {
+            "label":"How it Works",
+            "href":"/how_it_works"
+        },
+
+        {
+            "label":"Stories",
+            "href":"/stories"
+        }
+    ]
+}
