@@ -4,13 +4,19 @@ import Register from './Components/Register/Register';
 
 
 import './App.css';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
-    <>
-    <Nav />
-    <Register />
-    </>
+    <div className='page-container'>
+      <div className='content-wrap'>
+      <Nav />
+      <Register />
+
+      </div>
+    
+    <Footer />
+    </div>
   );
 }
 
