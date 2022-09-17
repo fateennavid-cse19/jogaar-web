@@ -38,6 +38,12 @@ const Footer = () => {
                     </ul>
                 </div>
 
+                {/*Column4*/}
+                <div className='col'>
+                  <h1 className='name'>Jogaar</h1>
+                  <p className='trademark'>@ 2022 Jogaar Ltd</p>
+                </div>
+
             </div>
         </div>
     </div>
