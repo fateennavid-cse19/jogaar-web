@@ -7,8 +7,13 @@ const Register_input = (props) => {
     
     <div className='reginput'>
         
-        <label>{label}</label>
-        <input {...inputProps} onChange={onChange} />
+        <label>
+          {label} 
+          <br />
+          <input {...inputProps} onChange={onChange} /> 
+          </label>
+        
+        
         </div>
   )
 }

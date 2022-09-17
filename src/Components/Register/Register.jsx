@@ -64,6 +64,17 @@ const Register = () => {
   
 
   const handleSubmit =(e)=> {
+    
+    if(values.password!=values.confirm)
+    {
+      alert("Password doesn't match!");
+    }
+    else{
+      alert('A form was submitted with Name :"' + values.full_name +
+        '" + Email :"'+values.email +'" and Contact :"' + values.contact + '"');
+
+    }
+
     e.preventDefault();
     
   };
@@ -75,13 +86,16 @@ const Register = () => {
   console.log(values)
   return (
     <div className='login'>
-      
+      <h1><b>Register</b></h1>
         <form onSubmit={handleSubmit}>
-          <h1>Register</h1>
+          
           {inputs?.map((input)=>(
             <Register_input key={input.id} {...input} value={values[input?.name]} onChange={onChange} />
           ))}
-          <button>Register</button>
+          <br /><button>Register</button><br /><br />
+          <p className='info'>By Signing up, you agree to our <a className="privacy_policy" href="/privacy_policy">Privacy Policy</a> and <a className='terms_of_use' href="/terms_of_use">Terms of Use</a></p>
+          <br />
+          <p className='choice'>Already have an account? <a className="login" href="/login">Log In</a></p>
         </form>
     </div>
   )
