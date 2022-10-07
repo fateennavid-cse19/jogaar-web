@@ -1,7 +1,7 @@
 import React from 'react'
-import './Login_input.css'
+import './Register_input.css'
 
-const Login_input = (props) => {
+const Register_input = (props) => {
   const{label,onChange,id,...inputProps}=props;
   return (
     
@@ -18,4 +18,4 @@ const Login_input = (props) => {
   )
 }
 
-export default Login_input
+export default Register_input

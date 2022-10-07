@@ -1,22 +1,24 @@
 import React from 'react'
 import {useState} from 'react'
 import {useRef} from 'react'
-import Login_input from './Login_input'
-import './login.css'
+import Register_input from './Register_input'
+import './register.css'
 
 
 const Login = () => {
 
   const [values,setValues]=useState(
     {
+      full_name:"",
       email:"",
-      password:""
+      password:"",
+      confirm:"",
+      contact:""
     }
   );
 
   const inputs=[
     
-
     {
       id:1,
       name:"email",
@@ -33,6 +35,7 @@ const Login = () => {
       label:"Password"
 
     }
+    
 
   ]
   
@@ -41,10 +44,10 @@ const Login = () => {
     
     if(!values.password)
     {
-      alert("No Password given!");
+      alert("No Password Given");
     }
     else{
-      alert('Successful login with Email :"' + values.email +'"');
+      alert('Login successful with Email :"' + values.email +'"');
 
     }
 
@@ -58,14 +61,18 @@ const Login = () => {
   
   console.log(values)
   return (
-    <div className='register'>
+    <div className='login'>
       <h1><b>Login</b></h1>
         <form onSubmit={handleSubmit}>
           
           {inputs?.map((input)=>(
-            <Login_input key={input.id} {...input} value={values[input?.name]} onChange={onChange} />
+            <Register_input key={input.id} {...input} value={values[input?.name]} onChange={onChange} />
           ))}
+          <p className='reset_pass'><a className="forget" href="/forget_password">Forgot Password?</a></p>
+          <br /><br />
           <br /><button>Log In</button><br /><br />
+          
+          <br />
           <p className='choice'>New to Jogaar? <a className="login" href="/register">Get Started</a></p>
         </form>
     </div>
