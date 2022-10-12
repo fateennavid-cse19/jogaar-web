@@ -2,6 +2,8 @@ import React from 'react';
 import Nav from './Components/Navbar/Nav';
 import Register from './Components/Register/Register';
 import Login from './Components/Login/Login';
+import home_pic from "./Images/home.png";
+import Home from "./Components/Home/Home";
 
 
 import './App.css';
@@ -16,7 +18,7 @@ function App() {
         <Nav />
         <div className='content-wrap'>
           <Routes>
-            <Route path='/' element={<Register />} />
+            <Route path='/' element={<Home imageSrc={home_pic} />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
           </Routes>
