@@ -1,15 +1,14 @@
 import React from 'react'
 import {useState} from 'react'
-import {useRef} from 'react'
 import Register_input from './Register_input'
 import './register.css'
-
+// import {useNavigate} from 'react-router-dom'
 
 const Register = () => {
 
   const [values,setValues]=useState(
     {
-      full_name:"",
+      name:"",
       email:"",
       password:"",
       confirm:"",
@@ -20,7 +19,7 @@ const Register = () => {
   const inputs=[
     {
       id:1,
-      name:"full_name",
+      name:"name",
       type:"text",
       placeholder:"Full Name",
       label:"Full Name"
@@ -43,7 +42,7 @@ const Register = () => {
       label:"Password"
 
     },
-    {
+    /* {
       id:4,
       name:"confirm",
       type:"password",
@@ -59,21 +58,45 @@ const Register = () => {
       label:"Contact"
 
     }
-
+ */
   ]
+
+  // const navigate = useNavigate()
+
+  async function signUp()
+  {
+
+    let result= await fetch("http://127.0.0.1:8000/users",{
+      method: 'POST',
+      body: JSON.stringify(
+        values.name,
+        values.email,
+        values.password,
+        
+      ),
+      headers:{
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+      }
+    })
+
+    result =await result.json()
+    // localStorage.setItem("user-info",JSON.stringify(result))
+    // navigate("/")
+  }
   
 
   const handleSubmit =(e)=> {
     
-    if(values.password!=values.confirm)
-    {
-      alert("Password doesn't match!");
-    }
-    else{
-      alert('A form was submitted with Name :"' + values.full_name +
+    // if(values.password!==values.confirm)
+    // {
+    //   alert("Password doesn't match!");
+    // }
+    // else{
+      alert('A form was submitted with Name :"' + values.name +
         '" + Email :"'+values.email +'" and Contact :"' + values.contact + '"');
 
-    }
+    // }
 
     e.preventDefault();
     
@@ -92,7 +115,7 @@ const Register = () => {
           {inputs?.map((input)=>(
             <Register_input key={input.id} {...input} value={values[input?.name]} onChange={onChange} />
           ))}
-          <br /><button>Register</button><br /><br />
+          <br /><button onClick={signUp}>Register</button><br /><br />
           <p className='info'>By Signing up, you agree to our <a className="privacy_policy" href="/privacy_policy">Privacy Policy</a> and <a className='terms_of_use' href="/terms_of_use">Terms of Use</a></p>
           <br />
           <p className='choice'>Already have an account? <a className="login" href="/login">Log In</a></p>
