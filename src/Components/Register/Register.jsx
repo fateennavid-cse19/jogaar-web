@@ -11,8 +11,8 @@ const Register = () => {
       name:"",
       email:"",
       password:"",
-      confirm:"",
-      contact:""
+      /* confirm:"",
+      contact:"" */
     }
   );
 
@@ -65,13 +65,14 @@ const Register = () => {
 
   async function signUp()
   {
-
+    
     let result= await fetch("http://127.0.0.1:8000/users",{
       method: 'POST',
       body: JSON.stringify(
         values.name,
         values.email,
         values.password,
+
         
       ),
       headers:{
@@ -83,6 +84,7 @@ const Register = () => {
     result =await result.json()
     // localStorage.setItem("user-info",JSON.stringify(result))
     // navigate("/")
+
   }
   
 

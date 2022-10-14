@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Work Sans");
 .home{
     position: relative;
     width: 100%;
@@ -17,4 +18,43 @@
     right: 10%;
     font-size: 4rem;
     padding: 15px;
+    margin: left 200px;
+}
+
+.grid-container{
+    font-family: 'Work Sans';
+    color:#2E6B4C;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.grid-item{
+    /* background-color: rgba(255,255,255,0.8); */
+    border: 1px solid #2E6B4C;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+#show-info{
+    border:1px solid;
+    box-shadow: #f3f2f2;
+}
+
+.get_started{
+    margin-left: 400px;
+}
+
+.learn_more{
+    background-color: #f3f2f2;
+    color:black;
+}
+
+.home__title {
+    position: absolute;
+    bottom: 15%;
+    right: 10%;
+    font-size: 4rem;
+    padding: 15px;
+    margin: left 200px;
 }

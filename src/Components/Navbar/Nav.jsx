@@ -36,7 +36,7 @@ const Nav = () => {
   return (
     <nav className={styles.navbar}>
         <div className= {styles['logo-container']}>
-            <span><h3>Jogaar</h3></span>
+            <a href="/"><span><h3>Jogaar</h3></span></a>
         </div>
 
         {/* <div className= {styles['logo-direct-container']}>
