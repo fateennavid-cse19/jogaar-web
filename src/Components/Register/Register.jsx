@@ -6,6 +6,7 @@ import './register.css'
 
 const Register = () => {
 
+
   const [values,setValues]=useState(
     {
       name:"",
@@ -65,23 +66,46 @@ const Register = () => {
 
   async function signUp()
   {
+    let requestModel = {
+      name: values.name,
+      email: values.email,
+      password: values.password
+  }
+    console.log("hello!");  
+    console.log("requestModel ->", requestModel);
+
     
-    let result= await fetch("http://127.0.0.1:8000/users",{
-      method: 'POST',
-      body: JSON.stringify(
-        values.name,
-        values.email,
-        values.password,
+      const settings = {
+            method: 'POST',
+            body: JSON.stringify (requestModel),
+            headers:{
+              'Content-Type': 'application/json',
+              'accept': 'application/json'
+            }
+          };
+          
+          try{
+            const fetchResponse = await fetch ("http://127.0.0.1:8000/users", settings);
+            const result =await fetchResponse.json();
+            return result;
+          } catch (e) {
+                  return e;
+                }
+                
+    
+    
 
-        
-      ),
-      headers:{
-        'Content-Type': 'application/json',
-        'accept': 'application/json'
-      }
-    })
 
-    result =await result.json()
+    // let result= await fetch("http://127.0.0.1:8000/users",{
+    //   method: 'POST',
+    //   body: requestModel,
+    //   headers:{
+    //     'Content-Type': 'application/json',
+    //     'accept': 'application/json'
+    //   }
+    // })
+
+    // result =await result.json()
     // localStorage.setItem("user-info",JSON.stringify(result))
     // navigate("/")
 

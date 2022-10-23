@@ -9,11 +9,11 @@ const Login = () => {
 
   const [values,setValues]=useState(
     {
-      full_name:"",
+      // full_name:"",
       email:"",
       password:"",
-      confirm:"",
-      contact:""
+      // confirm:"",
+      // contact:""
     }
   );
 
