@@ -4,6 +4,8 @@ import {useRef} from 'react'
 import Register_input from './Register_input'
 import './register.css'
 
+import { UserContext } from '../../React-Context/UserContext'
+
 
 const Login = () => {
 
@@ -38,7 +40,42 @@ const Login = () => {
     
 
   ]
-  
+
+  async function Login_start()
+	{  
+		let requestModel = {
+      		email: values.email,
+          password: values.password
+      		
+  		}
+
+      
+    //console.log("hello!");  
+    console.log("requestModel ->", requestModel);
+    //console.log("requestModel2 ->", requestModel2);
+    
+    
+    const settings = {
+            method: 'POST',
+            body: JSON.stringify ('grant_type=&username=${requestModel}&password=${requestModel}&scope=&client_id=&client_secret='
+),
+            headers:{
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'accept': 'application/json',
+              // 'Authorization': 'Bearer <token>'
+            }
+          };
+          
+                    
+          try{
+            const fetchResponse = await fetch ("http://127.0.0.1:8000/login", settings);
+            const result =await fetchResponse.json();
+            return result;
+          } catch (e) {
+                  return e;
+                }
+
+  }
 
   const handleSubmit =(e)=> {
     
@@ -70,7 +107,7 @@ const Login = () => {
           ))}
           <p className='reset_pass'><a className="forget" href="/forget_password">Forgot Password?</a></p>
           <br /><br />
-          <br /><button>Log In</button><br /><br />
+          <br /><button onClick={Login_start}>Log In</button><br /><br />
           
           <br />
           <p className='choice'>New to Jogaar? <a className="login" href="/register">Get Started</a></p>

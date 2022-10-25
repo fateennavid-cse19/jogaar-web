@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 import Register_input from './Register_input'
 import './register.css'
-// import {useNavigate} from 'react-router-dom'
+//import {useNavigate} from 'react-router-dom'
 
 const Register = () => {
 
@@ -16,6 +16,8 @@ const Register = () => {
       contact:"" */
     }
   );
+
+  //const history =useNavigate();
 
   const inputs=[
     {
@@ -87,10 +89,15 @@ const Register = () => {
           try{
             const fetchResponse = await fetch ("http://127.0.0.1:8000/users", settings);
             const result =await fetchResponse.json();
+            // localStorage.setItem("user-info",JSON.stringify(result))
+            // history("/")
             return result;
           } catch (e) {
                   return e;
                 }
+
+    
+    
                 
     
     
@@ -106,8 +113,7 @@ const Register = () => {
     // })
 
     // result =await result.json()
-    // localStorage.setItem("user-info",JSON.stringify(result))
-    // navigate("/")
+    
 
   }
   
