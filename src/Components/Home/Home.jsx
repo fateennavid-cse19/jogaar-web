@@ -1,6 +1,9 @@
 import React from 'react'
 import "./Home.css";
 import jafor from "../../Images/jafor.png";
+import abdullah from "../../Images/abdullah.jpg"
+import frise from "../../Images/frise.png"
+import nadia from "../../Images/nadia.png"
 
 const Home = ({imageSrc}) => {
   return (
@@ -33,7 +36,7 @@ for aspiring entrepreneurs.</h1>
 
 <h1 className='title'>Success Stories</h1>
 
-      <div classname='box-item'>
+      <div className='box-item'>
         <div className='box1'>
           <div className='jafor'>
             <img className='jafor' src={jafor} alt="" />
@@ -46,24 +49,58 @@ for aspiring entrepreneurs.</h1>
         </div>
 
         <div className='box2'>
+          <div className='frise'>
+            <img className='frise' src={frise} alt="" />
+          </div>
+          <div className='writing'>
+            <div className='heading'>
+              <h3>The Story of Frise</h3>
+            </div>
+            Materializing the dreams of solvency into his family was a tough task for Faiaz, an university student. So he started to plan on creating a small fast food chain. But he didn’t have much funds...
+
+              <a className='special-font' href="/"> read on</a></div>
+              
+
+
+              <div className='abdullah'>
+            <img className='abdullah' src={abdullah} alt="" />
+          </div>
+          <div className='writing'>
+            <div className='heading'>
+              <h3>Abdullah’s Story</h3>
+            </div>
+            Scouting Dhaka’s streets trying  to convince uninterested folks to make deals just wasn’t making ends meet for Abdullah...
+              <a className='special-font' href="/">read on</a></div>
+
+              <div className='nadia'>
+            <img className='nadia' src={nadia} alt="" />
+          </div>
+          <div className='writing'>
+            <div className='heading'>
+              <h3>Nadia’s Bakery</h3>
+            </div>
+            Nadia used to be a simple housewife.Now she owns one of the largest bakeries in Uttara. While the art of baking came to her naturally, what she lacked was a means to monetize her talent...
+              <a className='special-font' href="/">read on</a></div>
+        </div>
+
+      </div>
+
+       
+        
+      <h1 className='featured'>Featured</h1>  
+      <div className='box-item'>
+        <div className='box1'>
           <div className='jafor'>
             <img className='jafor' src={jafor} alt="" />
           </div>
           <div className='heading'>
             <h3>Jafor's Story</h3>
           </div>
-              How Jogaar helped Abdul ex-Rickshaw Puller Jafor recover from a devestating road accident when all hope seemed...
-              <a className='special-font' href="/">read full story</a>
+          How Jogaar helped Abdul ex-Rickshaw Puller Jafor recover from a devestating road accident when all hope seemed...
+            <a className='special-font' href="/">read full story</a>
         </div>
-
       </div>
-
         
-
-        
-      
-      
-
 
       <div>
         <h1 classname='question'>Already a member?
@@ -74,6 +111,8 @@ for aspiring entrepreneurs.</h1>
       
       
     </div>
+
+    
 
     
   )

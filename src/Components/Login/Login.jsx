@@ -44,28 +44,32 @@ const Login = () => {
   async function Login_start()
 	{  
 		let requestModel = {
-      		email: values.email,
-          password: values.password
-      		
-  		}
-
+      'email': values.email,
+      'password': values.password
       
-    //console.log("hello!");  
-    console.log("requestModel ->", requestModel);
-    //console.log("requestModel2 ->", requestModel2);
-    
-    
-    const settings = {
-            method: 'POST',
-            body: JSON.stringify ('grant_type=&username=${requestModel}&password=${requestModel}&scope=&client_id=&client_secret='
-),
-            headers:{
-              'Content-Type': 'application/x-www-form-urlencoded',
-              'accept': 'application/json',
-              // 'Authorization': 'Bearer <token>'
-            }
-          };
-          
+  }
+
+  
+  
+// var formBody = Object.keys(requestModel).map(key => encodeURIComponent(key) + '=' + encodeURIComponent (requestModel[key])).join('&');
+// var formBody =[];
+// for(var property in requestModel){
+//   var encodedKey =encodeURIComponent(property);
+//   var encodedValue=encodeURIComponent(requestModel[property]);
+//   formBody.push(encodedKey + "=" + encodedValue);
+// }
+
+// formBody =formBody.join("&");
+
+const settings = {
+        method: 'POST',
+        body:JSON.stringify ('grant_type=&username=fnavid%40unique.com&password=1234&scope=&client_id=&client_secret='),
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'accept': 'application/json',
+          // 'Authorization': 'Bearer <token>'
+        }
+      }
                     
           try{
             const fetchResponse = await fetch ("http://127.0.0.1:8000/login", settings);

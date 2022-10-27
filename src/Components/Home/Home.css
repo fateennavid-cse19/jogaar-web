@@ -21,10 +21,15 @@
 
 .title {
    text-align: center;
-   bottom: 15%;
-   left: 10%;
    margin: 40px;
 }
+
+.featured {
+    text-align: left;
+    margin: 40px;
+ }
+
+
 
 /* .grid-container{
     font-family: 'Work Sans';
@@ -62,15 +67,16 @@
 
 .box-item{
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-gap: 10px;
+    grid-template-columns: repeat(2,1fr);
+    /*border: 1px solid;*/
+    grid-gap: 60px;
 }
 
 .box1{
   font-family: 'Work Sans';
   background-color: #f3f2f2;
-  width: 400px;
-  height: 250px;
+  /* width: 400px;
+  height: 250px; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   /* border: 15px solid green; */
   padding: 50px;
@@ -81,11 +87,13 @@
 .box2{
     font-family: 'Work Sans';
     background-color: #f3f2f2;
-    width: 400px;
-    height: 250px;
+    /* width: 400px;
+    height: 250px; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     /* border: 15px solid green; */
     padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
     /* margin-left: 900px; */
     
   }
@@ -113,11 +121,37 @@
 .jafor{
   
   padding: 5px;
-  width: 250px;
-  height: 150px;
+  width: 600px;
+  height: 400px;
+}
+
+.abdullah{
+  
+    padding: 5px;
+    width: 250px;
+    height: 150px;
+}
+
+.frise{
+  
+    padding: 5px;
+    width: 250px;
+    height: 150px;
+}
+
+.nadia{
+  
+    padding: 5px;
+    width: 250px;
+    height: 150px;
 }
 
 .question{
     margin-left: 400px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+/* .writing{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+} */
