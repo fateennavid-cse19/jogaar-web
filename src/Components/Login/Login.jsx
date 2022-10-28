@@ -3,8 +3,10 @@ import {useState} from 'react'
 import {useRef} from 'react'
 import Register_input from './Register_input'
 import './register.css'
+import Admin from "../Admin/Admin";
 
 import { UserContext } from '../../React-Context/UserContext'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 const result = {}
 const Login = () => {
@@ -49,17 +51,6 @@ const Login = () => {
       
   }
 
-  
-  
-// var formBody = Object.keys(requestModel).map(key => encodeURIComponent(key) + '=' + encodeURIComponent (requestModel[key])).join('&');
-// var formBody =[];
-// for(var property in requestModel){
-//   var encodedKey =encodeURIComponent(property);
-//   var encodedValue=encodeURIComponent(requestModel[property]);
-//   formBody.push(encodedKey + "=" + encodedValue);
-// }
-
-// formBody =formBody.join("&");
 
 const settings = {
         method: 'POST',
@@ -70,18 +61,53 @@ const settings = {
           // 'Authorization': 'Bearer <token>'
         }
       }
+
+      
+  
                     
           try{
             const fetchResponse = await fetch ("http://127.0.0.1:8000/login", settings);
             const result =await fetchResponse.json();
-            console.log(result);
-            if(result.detail =='given credentials are invalid')
+            // console.log(result);
+            if(!fetchResponse.ok)
             {
-              alert("Given credentials are invalid");
+              alert('Invalid Credentials');
             }
 
             else{
-              alert('Login successful with Email :"' + values.email +'"');
+              alert('Login Successful!');
+            }
+            const token = result.access_token
+            //console.log(token)
+            const getReq = {
+              method: 'GET',
+              headers:{
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                    }
+            }
+
+            const getResponse = await fetch ("http://127.0.0.1:8000/users/current", getReq);
+            const store_info = await getResponse.json()
+            console.log(store_info);
+
+            console.log(store_info.access_level);
+
+
+
+            if(store_info.access_level != "admin")
+            {
+              alert('Admin page not accessible by user!');
+            }
+
+            else{
+              <Router>
+                  <Routes>
+                    <Route path='/admin' element={<Admin/>} />
+                  </Routes>
+              </Router>
+              
             }
               
             return result;
@@ -89,11 +115,13 @@ const settings = {
                   return e;
                 }
 
+
+
   }
 
   const handleSubmit =(e)=> {
     
-    e.preventDefault();
+    e.preventDefault(); 
     
   };
 

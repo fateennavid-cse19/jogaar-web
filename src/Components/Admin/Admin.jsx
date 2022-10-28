@@ -1,6 +1,33 @@
 import React from 'react'
 import './Admin.css';
 
+
+async function check_user()
+{
+    const settings = {
+        method: 'GET',
+        headers: {
+            'accept': 'application/json'
+        }
+
+
+    }
+
+    try{
+        const fetchResponse = await fetch ("http://127.0.0.1:8000/users/10", settings);
+        const result =await fetchResponse.json();
+        console.log(result);
+        if(result.detail =='given credentials are invalid')
+        {
+          alert("Given credentials are invalid");
+        }
+          
+        return result;
+      } catch (e) {
+              return e;
+            }
+}
+
 const Admin = () => {
   return (
 
