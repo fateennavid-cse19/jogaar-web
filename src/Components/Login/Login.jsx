@@ -6,7 +6,7 @@ import './register.css'
 
 import { UserContext } from '../../React-Context/UserContext'
 
-
+const result = {}
 const Login = () => {
 
   const [values,setValues]=useState(
@@ -63,7 +63,7 @@ const Login = () => {
 
 const settings = {
         method: 'POST',
-        body:JSON.stringify ('grant_type=&username=fnavid%40unique.com&password=1234&scope=&client_id=&client_secret='),
+        body:JSON.stringify (`grant_type=&username=${requestModel.email}&password=${requestModel.password}&scope=&client_id=&client_secret=`),
         headers:{
           'Content-Type': 'application/x-www-form-urlencoded',
           'accept': 'application/json',
@@ -74,6 +74,16 @@ const settings = {
           try{
             const fetchResponse = await fetch ("http://127.0.0.1:8000/login", settings);
             const result =await fetchResponse.json();
+            console.log(result);
+            if(result.detail =='given credentials are invalid')
+            {
+              alert("Given credentials are invalid");
+            }
+
+            else{
+              alert('Login successful with Email :"' + values.email +'"');
+            }
+              
             return result;
           } catch (e) {
                   return e;
@@ -83,15 +93,6 @@ const settings = {
 
   const handleSubmit =(e)=> {
     
-    if(!values.password)
-    {
-      alert("No Password Given");
-    }
-    else{
-      alert('Login successful with Email :"' + values.email +'"');
-
-    }
-
     e.preventDefault();
     
   };
