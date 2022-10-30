@@ -5,10 +5,10 @@ import Register_input from './Register_input'
 import './register.css'
 import Admin from "../Admin/Admin";
 
-import { UserContext } from '../../React-Context/UserContext'
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
-const result = {}
+
+
+
 const Login = () => {
 
   const [values,setValues]=useState(
@@ -72,12 +72,12 @@ const settings = {
             if(!fetchResponse.ok)
             {
               alert('Invalid Credentials');
+              window.location.assign("http://localhost:3000/login");
             }
 
             else{
               alert('Login Successful!');
-            }
-            const token = result.access_token
+              const token = result.access_token
             //console.log(token)
             const getReq = {
               method: 'GET',
@@ -96,19 +96,18 @@ const settings = {
 
 
 
-            if(store_info.access_level != "admin")
+            if(store_info.access_level == "admin")
             {
-              alert('Admin page not accessible by user!');
+              window.location.assign("http://localhost:3000/admin");
             }
 
             else{
-              <Router>
-                  <Routes>
-                    <Route path='/admin' element={<Admin/>} />
-                  </Routes>
-              </Router>
-              
+              window.location.assign("http://localhost:3000/feed");
             }
+            }
+            
+
+            
               
             return result;
           } catch (e) {
@@ -141,6 +140,8 @@ const settings = {
           <p className='reset_pass'><a className="forget" href="/forget_password">Forgot Password?</a></p>
           <br /><br />
           <br /><button onClick={Login_start}>Log In</button><br /><br />
+
+
           
           <br />
           <p className='choice'>New to Jogaar? <a className="login" href="/register">Get Started</a></p>
