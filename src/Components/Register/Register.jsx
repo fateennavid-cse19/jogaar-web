@@ -147,7 +147,7 @@ const Register = () => {
           {inputs?.map((input)=>(
             <Register_input key={input.id} {...input} value={values[input?.name]} onChange={onChange} />
           ))}
-          <br /><button onClick={signUp}>Register</button><br /><br />
+          <br /><button className='signup' onClick={signUp}>Register</button><br /><br />
           <p className='info'>By Signing up, you agree to our <a className="privacy_policy" href="/privacy_policy">Privacy Policy</a> and <a className='terms_of_use' href="/terms_of_use">Terms of Use</a></p>
           <br />
           <p className='choice'>Already have an account? <a className="login" href="/login">Log In</a></p>

@@ -5,7 +5,7 @@ import Login from './Components/Login/Login';
 import home_pic from "./Images/home.png";
 import Home from "./Components/Home/Home";
 import Admin from "./Components/Admin/Admin";
-
+import Profile from './Profile/Profile';
 
 import './App.css';
 import Footer from './Components/Footer/Footer';
@@ -23,6 +23,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/admin' element={<Admin/>} />
+            <Route path='/profile' element={<Profile />}></Route>
           </Routes>
           
 

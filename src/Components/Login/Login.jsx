@@ -67,7 +67,8 @@ const settings = {
                     
           try{
             const fetchResponse = await fetch ("http://127.0.0.1:8000/login", settings);
-            const result =await fetchResponse.json();
+            const result =await fetchResponse.json()
+            var token = {}
             // console.log(result);
             if(!fetchResponse.ok)
             {
@@ -77,7 +78,7 @@ const settings = {
 
             else{
               alert('Login Successful!');
-              const token = result.access_token
+              token = result.access_token
             //console.log(token)
             const getReq = {
               method: 'GET',
@@ -90,26 +91,29 @@ const settings = {
 
             const getResponse = await fetch ("http://127.0.0.1:8000/users/current", getReq);
             const store_info = await getResponse.json()
-            console.log(store_info);
+            //JSON.stringify(store_info)
+            localStorage.setItem("name-info", JSON.stringify(store_info.name));
+            localStorage.setItem("email-info", JSON.stringify(store_info.email));
+            localStorage.setItem("date-info", JSON.stringify(store_info.created_at));
+            window.location.assign("http://localhost:3000/profile");
+            //alert(x)
 
-            console.log(store_info.access_level);
 
 
+            // if(store_info.access_level == "admin")
+            // {
+            //   // window.location.assign("http://localhost:3000/admin");
+            // }
 
-            if(store_info.access_level == "admin")
-            {
-              window.location.assign("http://localhost:3000/admin");
-            }
-
-            else{
-              window.location.assign("http://localhost:3000/feed");
-            }
+            // else{
+            //   window.location.assign("http://localhost:3000/profile");
+            // }
             }
             
 
             
               
-            return result;
+            return token;
           } catch (e) {
                   return e;
                 }
@@ -117,6 +121,8 @@ const settings = {
 
 
   }
+
+  
 
   const handleSubmit =(e)=> {
     

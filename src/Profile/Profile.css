@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css?family=Work Sans");
+.welcome-title{
+    margin-top: 40px;
+    margin-left: 20px;
+}
+
+.edit{
+    margin-left: 5px ;
+}
+
+.return{
+    margin-left: 700px;
+}
+
+.camp-box-item{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    /* border: 1px solid; */
+    grid-gap: 60px;
+} 
+
+
+.box-campaigns{
+    font-family: 'Work Sans';
+    background-color: #f3f2f2;
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* border: 15px solid green; */
+    padding: 50px;
+    /* margin-left: 100px;
+    margin-top: 50px; */
+}
+
+.name{
+    color:#2E6B4C;
+}
+
+.taka{
+    font-family: 'Work Sans';
+    width: 5em;
+    padding: 5px;
+    margin-left: 10px !important;
+    margin-top: 20px;
+    height: 40px;
+    background-color: #2E6B4C;
+    color: white;
+}
+
+.retro{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
