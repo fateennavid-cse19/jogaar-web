@@ -6,6 +6,10 @@ import home_pic from "./Images/home.png";
 import Home from "./Components/Home/Home";
 import Admin from "./Components/Admin/Admin";
 import Profile from './Profile/Profile';
+import CreateCamp from './Components/Create-Campaign/CreateCamp';
+import View_All from './Components/View_All/View_All';
+import Profile_Public from './Components/Profile-Public/Profile-Public';
+import Edit from "./Components/Edit_Account/Edit";
 
 import './App.css';
 import Footer from './Components/Footer/Footer';
@@ -24,6 +28,10 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/admin' element={<Admin/>} />
             <Route path='/profile' element={<Profile />}></Route>
+            <Route path='/create-campaign' element={<CreateCamp />}></Route>
+            <Route path='/view-user-campaigns' element={<View_All />}></Route>
+            <Route path='profile/public' element={<Profile_Public />}></Route>
+            <Route path='/edit' element={<Edit />}></Route>
           </Routes>
           
 

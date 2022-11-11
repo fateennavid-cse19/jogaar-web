@@ -79,6 +79,7 @@ const settings = {
             else{
               alert('Login Successful!');
               token = result.access_token
+              localStorage.setItem('token-info',JSON.stringify(token))
             //console.log(token)
             const getReq = {
               method: 'GET',
@@ -91,12 +92,16 @@ const settings = {
 
             const getResponse = await fetch ("http://127.0.0.1:8000/users/current", getReq);
             const store_info = await getResponse.json()
+            localStorage.clear()
             //JSON.stringify(store_info)
             localStorage.setItem("name-info", JSON.stringify(store_info.name));
             localStorage.setItem("email-info", JSON.stringify(store_info.email));
             localStorage.setItem("date-info", JSON.stringify(store_info.created_at));
+            localStorage.setItem("id-info", JSON.stringify(store_info.id));
+            // var x= localStorage.getItem("id-info")
+            // alert(x)
             window.location.assign("http://localhost:3000/profile");
-            //alert(x)
+            
 
 
 

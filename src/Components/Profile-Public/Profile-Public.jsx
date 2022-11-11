@@ -1,87 +1,36 @@
 import React from 'react'
 // import fateen from "../Images/Fateen.jpg"
-import "./Profile.css";
-import Register_input from './Register_input';
-import jewels from "../Images/jewels.png"
-import retro from "../Images/retro.png"
-import boutique from "../Images/boutique.png"
+import "./Profile-Public.css";
 import { useState } from 'react';
 import { useEffect } from 'react';
+//import {findUser} from './api';
+import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-const Profile = () => {
-  var name_info = JSON.parse(localStorage.getItem('name-info'))
-  var email_info =JSON.parse(localStorage.getItem('email-info'))
-  var date=JSON.parse(localStorage.getItem('date-info'))
-  var id=JSON.parse(localStorage.getItem('id-info'))
+const Profile_Public = () => {
+  var name_info = JSON.parse(localStorage.getItem('name-info-public'))
+  var email_info =JSON.parse(localStorage.getItem('email-info-public'))
+  var date=JSON.parse(localStorage.getItem('date-info-public'))
+  var id=JSON.parse(localStorage.getItem('id-info-public'))
   //var y = JSON.parse(JSON.stringify(localStorage.getItem("camps")))
   const [CampaignList,setCampaignList] = useState([]);
 
 
-  const [search,setSearch] =useState(
-    {
-      user_id: ""
-    }
-    
-  );
-
-  const input =[
-    {
-        id:1,
-        name:"search",
-        placeholder:"Search",
-        label:""
-
-    }
-  ]
-
-  async function findUser()
-  {
-
-    let requestModel = {
-      'user_id': search.user_id,
-      
-  }
-    const getUser ={
-
-        method: 'GET',
-        headers: {
-          'accept': 'application/json'
-        }
-
-    }
-    
-
-      const user = await fetch(`http://127.0.0.1:8000/users/${requestModel.user_id}`,getUser)
-      const store_user = await user.json()
-      
-
-     
-
-      localStorage.setItem("name-info-public", JSON.stringify(store_user));
-      // localStorage.setItem("email-info-public", JSON.stringify(store_user.email));
-      // localStorage.setItem("date-info-public", JSON.stringify(store_user.created_at));
-      // localStorage.setItem("id-info-public", JSON.stringify(store_user.id));
-      window.location.assign("http://localhost:3000/profile/public");
-    
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  }
-
-  const onChange=(e)=>{
-    setSearch({...search,[e.target.name]:e.target.search});
-  };
-
   
 
-
+  // const location = useLocation();
+  // let profile = (location.pathname.split("/"))
+  // console.log(profile[2]);
 
   function Logout()
   {
     localStorage.clear()
     window.location.assign('http://localhost:3000')
   }
+
+  // function User(){
+  //   const user_info = findUser()
+  // }
 
   async function View()
   {
@@ -97,7 +46,7 @@ const Profile = () => {
 
       
 
-      const all_camp= await fetch (`http://127.0.0.1:8000/users/${id}/campaigns?limit=2&offset=0`, getCamp);
+      const all_camp= await fetch (`http://127.0.0.1:8000/users/${id}/campaigns?limit=100&offset=0`, getCamp);
       const store_camp = await all_camp.json()
       setCampaignList(store_camp)
       
@@ -111,22 +60,6 @@ const Profile = () => {
     <><div className='profile'>
       <div className='box-info-item'>
         <h1 className='welcome-title'>Welcome, {name_info}</h1>
-        <a href="/edit"><button className='edit'>Edit account</button></a>
-
-        <form onSubmit={handleSubmit} className='search-form'>
-        {input?.map((input)=>(
-            <Register_input key={input.id} {...input} value={search[input?.name]} onChange={onChange} />
-          ))}
-        </form>
-
-        <br /><button className='signup' onClick={findUser}>Search</button>
-      </div>
-
-      
-
-      <div>
-        
-
       </div>
 
       <div className='box1'>
@@ -156,7 +89,6 @@ const Profile = () => {
           
           <div className='buttons'>
             <button className='view' onClick={View}>View</button>
-            <a href="/create-campaign"><button className='create-camp'>Make a campaign</button></a>
             <a href="/view-user-campaigns"><button className='learn_more'>View all</button></a>
           </div>
           
@@ -209,7 +141,12 @@ const Profile = () => {
         <a href="/feed"><button className='return'>Return to feed</button></a>
         <a href="/"><button className='learn_more' onClick={Logout}>Logout</button></a>
         
-      </div></>
+      </div>
+
+    <div>
+      {id}</div>  
+      
+      </>
 
         
       
@@ -218,4 +155,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default Profile_Public

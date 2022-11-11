@@ -1,0 +1,17 @@
+.reg_input{
+    padding-top: 40px;
+    /* padding-bottom: 10px; */
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 10vh; */
+    background: white !important;
+    background-size: cover;
+    background-position: center;
+}
+
+input{
+    width: 40em;
+    padding: 15px;
+    margin: 5px 0px;
+}
