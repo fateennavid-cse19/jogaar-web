@@ -8,8 +8,11 @@ import Admin from "./Components/Admin/Admin";
 import Profile from './Profile/Profile';
 import CreateCamp from './Components/Create-Campaign/CreateCamp';
 import View_All from './Components/View_All/View_All';
-import Profile_Public from './Components/Profile-Public/Profile-Public';
 import Edit from "./Components/Edit_Account/Edit";
+import EditCamp from "./Components/Edit-Campaign/EditCamp"
+import DeleteCamp from './Components/Delete-Campaign/DeleteCamp';
+import FindUser from './Components/Find-user/FindUser';
+import Profile_Public from "./Components/Profile_Public/Profile_Public"
 
 import './App.css';
 import Footer from './Components/Footer/Footer';
@@ -30,8 +33,11 @@ function App() {
             <Route path='/profile' element={<Profile />}></Route>
             <Route path='/create-campaign' element={<CreateCamp />}></Route>
             <Route path='/view-user-campaigns' element={<View_All />}></Route>
-            <Route path='profile/public' element={<Profile_Public />}></Route>
             <Route path='/edit' element={<Edit />}></Route>
+            <Route path='/edit-campaign' element={<EditCamp />}></Route>
+            <Route path='/delete-campaign' element={<DeleteCamp />}></Route>
+            <Route path='/find-user' element={<FindUser />}></Route>
+            <Route path='/profile/public' element= {<Profile_Public />}></Route>
           </Routes>
           
 

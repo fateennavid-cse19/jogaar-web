@@ -1,36 +1,34 @@
 import React from 'react'
 // import fateen from "../Images/Fateen.jpg"
-import "./Profile-Public.css";
+import "./Profile.css";
 import { useState } from 'react';
 import { useEffect } from 'react';
-//import {findUser} from './api';
-import { useLocation } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 
 const Profile_Public = () => {
-  var name_info = JSON.parse(localStorage.getItem('name-info-public'))
-  var email_info =JSON.parse(localStorage.getItem('email-info-public'))
-  var date=JSON.parse(localStorage.getItem('date-info-public'))
-  var id=JSON.parse(localStorage.getItem('id-info-public'))
+  var public_name_info = JSON.parse(localStorage.getItem('public_user_name'))
+  var public_email_info =JSON.parse(localStorage.getItem('public_user_email'))
+  var public_date_info=JSON.parse(localStorage.getItem('public_user_date'))
+  var public_user_id=JSON.parse(localStorage.getItem('public_user_id'))
   //var y = JSON.parse(JSON.stringify(localStorage.getItem("camps")))
   const [CampaignList,setCampaignList] = useState([]);
 
 
   
 
-  // const location = useLocation();
-  // let profile = (location.pathname.split("/"))
-  // console.log(profile[2]);
+  
+
+  
+  
+  
+  
+
+
 
   function Logout()
   {
     localStorage.clear()
     window.location.assign('http://localhost:3000')
   }
-
-  // function User(){
-  //   const user_info = findUser()
-  // }
 
   async function View()
   {
@@ -46,7 +44,7 @@ const Profile_Public = () => {
 
       
 
-      const all_camp= await fetch (`http://127.0.0.1:8000/users/${id}/campaigns?limit=100&offset=0`, getCamp);
+      const all_camp= await fetch (`http://127.0.0.1:8000/users/${public_user_id}/campaigns?limit=2&offset=0`, getCamp);
       const store_camp = await all_camp.json()
       setCampaignList(store_camp)
       
@@ -59,7 +57,20 @@ const Profile_Public = () => {
 
     <><div className='profile'>
       <div className='box-info-item'>
-        <h1 className='welcome-title'>Welcome, {name_info}</h1>
+        <h1 className='welcome-title'>Welcome, {public_name_info}</h1>
+        <a href="/edit"><button className='edit'>Edit account</button></a>
+        <a href="/find-user"><button className='learn_more'>View public profile</button></a>
+
+        
+
+        
+      </div>
+
+      
+
+      <div>
+        
+
       </div>
 
       <div className='box1'>
@@ -77,8 +88,8 @@ const Profile_Public = () => {
             <h3>12</h3></div>
         </div>
         <div>
-          <h4>Email Address: {email_info}</h4>
-          <h4>Date of creating account: {date} </h4>
+          <h4>Email Address: {public_email_info}</h4>
+          <h4>Date of creating account: {public_date_info} </h4>
         </div>
 
         <div>
@@ -89,6 +100,7 @@ const Profile_Public = () => {
           
           <div className='buttons'>
             <button className='view' onClick={View}>View</button>
+            <a href="/create-campaign"><button className='create-camp'>Make a campaign</button></a>
             <a href="/view-user-campaigns"><button className='learn_more'>View all</button></a>
           </div>
           
@@ -141,12 +153,7 @@ const Profile_Public = () => {
         <a href="/feed"><button className='return'>Return to feed</button></a>
         <a href="/"><button className='learn_more' onClick={Logout}>Logout</button></a>
         
-      </div>
-
-    <div>
-      {id}</div>  
-      
-      </>
+      </div></>
 
         
       

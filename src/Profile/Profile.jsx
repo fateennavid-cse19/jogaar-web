@@ -17,62 +17,13 @@ const Profile = () => {
   const [CampaignList,setCampaignList] = useState([]);
 
 
-  const [search,setSearch] =useState(
-    {
-      user_id: ""
-    }
-    
-  );
+  
 
-  const input =[
-    {
-        id:1,
-        name:"search",
-        placeholder:"Search",
-        label:""
+  
 
-    }
-  ]
-
-  async function findUser()
-  {
-
-    let requestModel = {
-      'user_id': search.user_id,
-      
-  }
-    const getUser ={
-
-        method: 'GET',
-        headers: {
-          'accept': 'application/json'
-        }
-
-    }
-    
-
-      const user = await fetch(`http://127.0.0.1:8000/users/${requestModel.user_id}`,getUser)
-      const store_user = await user.json()
-      
-
-     
-
-      localStorage.setItem("name-info-public", JSON.stringify(store_user));
-      // localStorage.setItem("email-info-public", JSON.stringify(store_user.email));
-      // localStorage.setItem("date-info-public", JSON.stringify(store_user.created_at));
-      // localStorage.setItem("id-info-public", JSON.stringify(store_user.id));
-      window.location.assign("http://localhost:3000/profile/public");
-    
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  }
-
-  const onChange=(e)=>{
-    setSearch({...search,[e.target.name]:e.target.search});
-  };
-
+  
+  
+  
   
 
 
@@ -112,14 +63,11 @@ const Profile = () => {
       <div className='box-info-item'>
         <h1 className='welcome-title'>Welcome, {name_info}</h1>
         <a href="/edit"><button className='edit'>Edit account</button></a>
+        <a href="/find-user"><button className='learn_more'>View public profile</button></a>
 
-        <form onSubmit={handleSubmit} className='search-form'>
-        {input?.map((input)=>(
-            <Register_input key={input.id} {...input} value={search[input?.name]} onChange={onChange} />
-          ))}
-        </form>
+        
 
-        <br /><button className='signup' onClick={findUser}>Search</button>
+        
       </div>
 
       

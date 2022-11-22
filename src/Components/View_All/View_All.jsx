@@ -40,13 +40,14 @@ const View_All = () => {
                   <div className='heading'>
                     <h3 className='name'>{item.title}</h3>
                   </div>
-                  {/* <h3>ID:{item.id}</h3> */}
+                  <h3>ID:{item.id}</h3>
                   <h3>Date of creation: {item.created_at}</h3>
                   
                   <h3>Goal:{item.goal}</h3>
                   <h3>Pledged:{item.pledged}</h3>
                   <h3>Deadline: {item.deadline}</h3>
                   <h3>Challenges: {item.challenges}</h3>
+                  <h3>Current_state: {item.current_state}</h3>
                   
 
                 </div>
@@ -60,6 +61,17 @@ const View_All = () => {
             </div>;
             
           })}
+
+          <div>
+
+          <div className='button-types'>
+        <a href="/edit-campaign"><button className='return'>Edit Campaign</button></a>
+        <a href="/delete-campaign"><button className='learn_more'>Delete Camapign</button></a>
+        
+      </div>
+
+          </div>
+
         </div>
         
     </div>

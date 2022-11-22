@@ -86,3 +86,14 @@
     width: 300px;
     margin-left: 150px;
 }
+
+.search-form{
+    font-family: 'Work Sans';
+    background-color: white !important;
+    padding: 0px 30px;
+    border-radius: 10px;
+    width: 50%;
+    margin-left: 400px;
+    color: #2E6B4C;
+
+}
