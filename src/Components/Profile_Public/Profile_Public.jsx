@@ -56,10 +56,11 @@ const Profile_Public = () => {
   return (
 
     <><div className='profile'>
+      <a href="/find-user"><button className='view'>View public profile</button></a>
       <div className='box-info-item'>
+      
         <h1 className='welcome-title'>Welcome, {public_name_info}</h1>
-        <a href="/edit"><button className='edit'>Edit account</button></a>
-        <a href="/find-user"><button className='learn_more'>View public profile</button></a>
+        
 
         
 
@@ -98,10 +99,9 @@ const Profile_Public = () => {
 
         
           
-          <div className='buttons'>
-            <button className='view' onClick={View}>View</button>
-            <a href="/create-campaign"><button className='create-camp'>Make a campaign</button></a>
-            <a href="/view-user-campaigns"><button className='learn_more'>View all</button></a>
+          <div className='buttons-public'>
+            <button className='view' onClick={View}>View top campaigns</button>
+            <a href="/view-public-campaigns"><button className='learn_more'>View all</button></a>
           </div>
           
         
@@ -151,7 +151,7 @@ const Profile_Public = () => {
 
     </div><br /><br /><div className='button-types'>
         <a href="/feed"><button className='return'>Return to feed</button></a>
-        <a href="/"><button className='learn_more' onClick={Logout}>Logout</button></a>
+        <a href="/profile"><button className='learn_more'>Return to Profile</button></a>
         
       </div></>
 

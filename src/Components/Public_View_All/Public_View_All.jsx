@@ -2,9 +2,9 @@ import React from 'react'
 import { useState } from 'react';
 import "./View_All.css"
 
-const View_All = () => {
+const Public_View_All = () => {
 
-    var id=JSON.parse(localStorage.getItem('id-info'))
+    var public_user_id=JSON.parse(localStorage.getItem('public_user_id'))
     const [CampaignList,setCampaignList] = useState([]);
 
     async function View()
@@ -21,7 +21,7 @@ const View_All = () => {
 
       
 
-      const all_camp= await fetch (`http://127.0.0.1:8000/users/${id}/campaigns?limit=100&offset=0`, getCamp);
+      const all_camp= await fetch (`http://127.0.0.1:8000/users/${public_user_id}/campaigns?limit=100&offset=0`, getCamp);
       const store_camp = await all_camp.json()
       setCampaignList(store_camp)
       
@@ -32,8 +32,8 @@ const View_All = () => {
     <div className='view-all'>
       <div className='button-type'>
         <button className='view' onClick={View}>View</button>
-        <a href="/edit-campaign"><button className='return'>Edit Campaign</button></a>
-        <a href="/delete-campaign"><button className='learn_more'>Delete Camapign</button></a>
+        <a href="/profile/public"><button className='return'>Return to public profile</button></a>
+        <a href="/report-campaign"><button className='learn_more'>Report Camapign</button></a>
       </div>
         
         <div className='camp-box-view-item'>
@@ -79,4 +79,4 @@ const View_All = () => {
   )
 }
 
-export default View_All
+export default Public_View_All

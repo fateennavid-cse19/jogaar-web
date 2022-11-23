@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Work Sans");
+
+.heading-campaign{
+    align-items: center !important;
+    margin-left: 600px;
+}
+
+.description{
+    font-family: 'Work Sans';
+    margin-left: 400px;
+}
+
+.grid-img-and-progress{
+    display: grid !important;
+    grid-template-columns: repeat(2,1fr) !important;
+}
+
+.progress-bar-big{
+    height:10px;
+    width: 50%;
+    border:1px solid;
+    margin-left: 5px;
+    
+}
+
+.progress-complete{
+    height:10px;
+    width: 93%;
+    background-color:#2E6B4C;
+    
+}
+
+.money{
+    font-family: 'Work Sans';
+    margin-left: 10px;
+}
+
+.side_buttons{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.FAQ{
+
+    margin-left: 70px;
+
+}
+
+.report{
+    background-color: #f3f2f2;
+    color:black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 20px;
+}

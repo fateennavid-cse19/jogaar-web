@@ -13,6 +13,10 @@ import EditCamp from "./Components/Edit-Campaign/EditCamp"
 import DeleteCamp from './Components/Delete-Campaign/DeleteCamp';
 import FindUser from './Components/Find-user/FindUser';
 import Profile_Public from "./Components/Profile_Public/Profile_Public"
+import Public_View_All from './Components/Public_View_All/Public_View_All';
+import Camp_Find from './Components/Campaign_Find/Camp_Find';
+import Camp_View from './Components/Camp_View/Camp_View';
+import Camp_View_Pledger from './Components/Camp_View_Pledger/Camp_View_Pledger';
 
 import './App.css';
 import Footer from './Components/Footer/Footer';
@@ -38,6 +42,10 @@ function App() {
             <Route path='/delete-campaign' element={<DeleteCamp />}></Route>
             <Route path='/find-user' element={<FindUser />}></Route>
             <Route path='/profile/public' element= {<Profile_Public />}></Route>
+            <Route path='/view-public-campaigns' element= {<Public_View_All />}></Route>
+            <Route path='/find-campaign' element= {<Camp_Find />}></Route>
+            <Route path='/view-campaign' element= {<Camp_View />}></Route>
+            <Route path='/view-campaign-pledger' element= {<Camp_View_Pledger />}></Route>
           </Routes>
           
 

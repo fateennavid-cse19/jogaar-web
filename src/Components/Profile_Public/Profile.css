@@ -66,12 +66,11 @@
     grid-template-columns: repeat(2,1fr);
 }
 
-.buttons{
+.buttons-public{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(2,1fr);
     grid-gap:1px;
-    margin-right: 20px !important;
-    margin-left: 10px;
+    margin-left: 80px;
     align-items: center;
 }
 
