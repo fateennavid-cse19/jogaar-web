@@ -7,7 +7,6 @@ import Register_input from "./Register_input"
 
 const CreateMilestone = () => {
 
-  var camp_ID = JSON.parse(localStorage.getItem('campaign_id'))
   const [values, setValues] = useState({
     title: "",
     description: "",
@@ -45,6 +44,14 @@ const CreateMilestone = () => {
       type: "date",
       placeholder: "Deadline",
       label: "Deadline",
+    },
+    {
+      id:4,
+      name:"camp_id",
+      type:"text",
+      placeholder:"Campaign ID",
+      label:"Give Specific Campaign ID"
+
     }
   ]
 
@@ -57,6 +64,10 @@ const CreateMilestone = () => {
       title : values.title,
       description: values.description,
       deadline: date.toJSON()
+    }
+
+    let getCamp = {
+      camp_id: values.camp_id
     }
     // console.log("hello!");
     // console.log("requestModel ->", requestModel)
@@ -78,7 +89,7 @@ const CreateMilestone = () => {
 
     try {
       const fetchResponse = await fetch(
-        `http://127.0.0.1:8000/campaigns/${camp_ID}/milestones`,
+        `http://127.0.0.1:8000/campaigns/${getCamp.camp_id}/milestones`,
         settings
       )
       const result = await fetchResponse.json()

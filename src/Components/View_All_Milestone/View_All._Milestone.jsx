@@ -2,9 +2,10 @@ import React from 'react'
 import { useState } from 'react';
 import "./View_All.css"
 
-const View_All = () => {
+const View_All_Milestone = () => {
 
     var id=JSON.parse(localStorage.getItem('id-info'))
+    var camp_ID = JSON.parse(localStorage.getItem('campaign_id'))
     const [CampaignList,setCampaignList] = useState([]);
 
     async function View()
@@ -82,4 +83,4 @@ const View_All = () => {
   )
 }
 
-export default View_All
+export default View_All_Milestone

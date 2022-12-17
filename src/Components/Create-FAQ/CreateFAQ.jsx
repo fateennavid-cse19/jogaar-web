@@ -7,7 +7,6 @@ import Register_input from "./Register_input"
 
 const CreateFAQ = () => {
 
-  var camp_ID = JSON.parse(localStorage.getItem('campaign_id'))
   const [values, setValues] = useState({
     question: "",
     answer: "",
@@ -45,6 +44,14 @@ const CreateFAQ = () => {
       type: "number",
       placeholder: "Order",
       label: "Order",
+    },
+    {
+      id:4,
+      name:"camp_id",
+      type:"text",
+      placeholder:"Campaign ID",
+      label:"Give Specific Campaign ID"
+
     }
   ]
 
@@ -55,6 +62,10 @@ const CreateFAQ = () => {
       question : values.question,
       answer: values.answer,
       order: values.order
+    }
+
+    let getCamp = {
+      camp_id: values.camp_id
     }
     // console.log("hello!");
     // console.log("requestModel ->", requestModel)
@@ -76,7 +87,7 @@ const CreateFAQ = () => {
 
     try {
       const fetchResponse = await fetch(
-        `http://127.0.0.1:8000/campaigns/${camp_ID}/faqs`,
+        `http://127.0.0.1:8000/campaigns/${getCamp.camp_id}/faqs`,
         settings
       )
       const result = await fetchResponse.json()

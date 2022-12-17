@@ -20,6 +20,9 @@ import Camp_View_Pledger from './Components/Camp_View_Pledger/Camp_View_Pledger'
 import CreateFAQ from './Components/Create-FAQ/CreateFAQ';
 import CreateMilestone from './Components/Create-Milestone/CreateMilestone';
 import CreateRewards from './Components/Create-Rewards/CreateRewards';
+import Report from './Components/Report/Report';
+import View_All_Report from './Components/View_All_Report/View_All_Report';
+import View_All_Milestone from './Components/View_All_Milestone/View_All._Milestone';
 
 import './App.css';
 import Footer from './Components/Footer/Footer';
@@ -51,7 +54,10 @@ function App() {
             <Route path='/view-campaign-pledger' element= {<Camp_View_Pledger />}></Route>
             <Route path='/create-faq' element= {<CreateFAQ />}></Route>
             <Route path='/create-milestone' element= {<CreateMilestone />}></Route>
+            <Route path='/view-all-milestone' element= {<View_All_Milestone />}></Route>
             <Route path='/create-reward' element= {<CreateRewards />}></Route>
+            <Route path='/report' element= {<Report />}></Route>
+            <Route path='/view-reports' element= {<View_All_Report />}></Route>
           </Routes>
           
 

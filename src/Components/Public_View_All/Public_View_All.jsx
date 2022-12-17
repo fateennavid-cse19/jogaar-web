@@ -33,7 +33,7 @@ const Public_View_All = () => {
       <div className='button-type'>
         <button className='view' onClick={View}>View</button>
         <a href="/profile/public"><button className='return'>Return to public profile</button></a>
-        <a href="/report-campaign"><button className='learn_more'>Report Camapign</button></a>
+        <a href="/report"><button className='learn_more'>Report Camapign</button></a>
       </div>
         
         <div className='camp-box-view-item'>
