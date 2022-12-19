@@ -4,14 +4,14 @@ import Register_input from './Register_input'
 import './register.css'
 //import {useNavigate} from 'react-router-dom'
 
-const EditCamp = () => {
+const EditFAQ = () => {
 
 
   const [values,setValues]=useState(
     {
-      title:"",
-      description:"",
-      challenges:"",
+      question:"",
+      answer:"",
+      order:"",
     }
   );
 
@@ -20,46 +20,46 @@ const EditCamp = () => {
   const inputs=[
     {
       id:1,
-      name:"title",
+      name:"question",
       type:"text",
-      placeholder:"Title",
-      label:"Title"
+      placeholder:"Question",
+      label:"Question"
 
     },
 
     {
       id:2,
-      name:"description",
+      name:"answer",
       type:"text",
       placeholder:"Description",
       label:"Description"
 
     },
     {
-      id:3,
-      name:"challenges",
-      type:"text",
-      placeholder:"Challenges",
-      label:"Challenges"
-
+      id: 3,
+      name: "order",
+      type: "number",
+      placeholder: "Order",
+      label: "Order",
     },
     {
       id:4,
-      name:"camp_id",
+      name:"faq_id",
       type:"text",
-      placeholder:"Campaign ID",
-      label:"Give Specific Campaign ID"
+      placeholder:"FAQ ID",
+      label:"Give Specific FAQ ID"
 
     }
 
   ]
 
 
+
   async function signUp()
   {
 
     let getCamp = {
-      camp_id: values.camp_id
+      faq_id: values.faq_id
     }
 
     const Camp_info = {
@@ -69,15 +69,15 @@ const EditCamp = () => {
       }
     }
 
-    const update_camp = await fetch (`http://127.0.0.1:8000/campaigns/${getCamp.camp_id}`,Camp_info)
+    const update_camp = await fetch (`http://127.0.0.1:8000/faqs/${getCamp.faq_id}`,Camp_info)
     const store_update_camp = await update_camp.json()
     localStorage.setItem("campaign-updated",JSON.stringify(store_update_camp.id))
-    var campaign_id= localStorage.getItem("campaign-updated")
+    var faq_id= localStorage.getItem("campaign-updated")
 
     let requestModel = {
-      title: values.title,
-      description: values.description,
-      challenges: values.challenges
+      question: values.question,
+      answer: values.answer,
+      order: values.order
   }
      
   //   console.log("requestModel ->", requestModel);
@@ -100,16 +100,16 @@ const EditCamp = () => {
   //         console.log(settings);
           
           try{
-            const fetchResponse = await fetch (`http://127.0.0.1:8000/campaigns/${campaign_id}`, settings);
+            const fetchResponse = await fetch (`http://127.0.0.1:8000/faqs/${faq_id}`, settings);
             const result =await fetchResponse.json();
            
             if(!fetchResponse.ok){
-              alert("Campaign might not be edited due to expiry of access token.Please login again to edit campaign!")
+              alert("FAQ might not be edited due to expiry of access token.Please login again to edit campaign!")
               window.location.assign("http://localhost:3000/login");
             }
             else{
-              alert('Campaign created successfully!')
-              window.location.assign("http://localhost:3000/view-user-campaigns");
+              alert('FAQ updated successfully!')
+              window.location.assign("http://localhost:3000/view-faq");
             }
             return result;
           } catch (e) {
@@ -152,13 +152,13 @@ const EditCamp = () => {
   console.log(values)
   return (
     <div className='login'>
-      <h1><b>Edit a campaign</b></h1>
+      <h1><b>Edit a FAQ</b></h1>
         <form onSubmit={handleSubmit}>
           
           {inputs?.map((input)=>(
             <Register_input key={input.id} {...input} value={values[input?.name]} onChange={onChange} />
           ))}
-          <br /><button className='signup' onClick={signUp}>Edit a campaign</button><br /><br />
+          <br /><button className='signup' onClick={signUp}>Edit a FAQ</button><br /><br />
           {/* <p className='info'>By Signing up, you agree to our <a className="privacy_policy" href="/privacy_policy">Privacy Policy</a> and <a className='terms_of_use' href="/terms_of_use">Terms of Use</a></p>
           <br />
           <p className='choice'>Already have an account? <a className="login" href="/login">Log In</a></p> */}
@@ -167,4 +167,4 @@ const EditCamp = () => {
   )
 }
 
-export default EditCamp
+export default EditFAQ

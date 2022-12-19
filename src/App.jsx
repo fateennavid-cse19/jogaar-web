@@ -23,11 +23,20 @@ import CreateRewards from './Components/Create-Rewards/CreateRewards';
 import Report from './Components/Report/Report';
 import View_All_Report from './Components/View_All_Report/View_All_Report';
 import View_All_Milestone from './Components/View_All_Milestone/View_All._Milestone';
+import View_All_Reward from './Components/View_All_Rewards/View_All._Reward';
+import View_All_FAQ from './Components/View_All_FAQ/View_All._FAQ';
+import EditMilestone from './Components/Edit-Milestone/EditMilestone';
+import EditRewards from './Components/Edit-Rewards/EditRewards';
+import EditFAQ from './Components/Edit-FAQ/EditFAQ';
+import DeleteMilestone from './Components/Delete-Milestone/DeleteMilestone';
+import DeleteRewards from './Components/Delete-Rewards/DeleteRewards';
+import DeleteFAQ from './Components/Delete-FAQ/DeleteFAQ';
 
 import './App.css';
 import Footer from './Components/Footer/Footer';
 
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+
 
 function App() {
   return (
@@ -53,11 +62,20 @@ function App() {
             <Route path='/view-campaign' element= {<Camp_View />}></Route>
             <Route path='/view-campaign-pledger' element= {<Camp_View_Pledger />}></Route>
             <Route path='/create-faq' element= {<CreateFAQ />}></Route>
+            <Route path='/view-faq' element= {<View_All_FAQ />}></Route>
             <Route path='/create-milestone' element= {<CreateMilestone />}></Route>
-            <Route path='/view-all-milestone' element= {<View_All_Milestone />}></Route>
+            <Route path='/view-milestone' element= {<View_All_Milestone />}></Route>
+            <Route path='/view-reward' element= {<View_All_Reward />}></Route>
             <Route path='/create-reward' element= {<CreateRewards />}></Route>
             <Route path='/report' element= {<Report />}></Route>
             <Route path='/view-reports' element= {<View_All_Report />}></Route>
+            <Route path='/edit-milestone' element={<EditMilestone />}></Route>
+            <Route path='/edit-reward' element={<EditRewards />}></Route>
+            <Route path='/edit-faq' element={<EditFAQ />}></Route>
+            <Route path='/delete-milestone' element={<DeleteMilestone />}></Route>
+            <Route path='/delete-reward' element={<DeleteRewards />}></Route>
+            <Route path='/delete-faq' element={<DeleteFAQ />}></Route>
+            
           </Routes>
           
 

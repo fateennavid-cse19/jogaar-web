@@ -2,10 +2,10 @@ import React from 'react'
 import { useState } from 'react';
 import "./View_All.css"
 
-const View_All_Milestone = () => {
+const View_All_FAQ = () => {
 
     var camp_ID = JSON.parse(localStorage.getItem('campaign_id'))
-    const [MilestoneList,setMilestoneList]= useState([]);
+    const [FAQList,setFAQList] = useState([]);
 
     async function View()
   {
@@ -21,9 +21,9 @@ const View_All_Milestone = () => {
 
       
 
-      const all_camp= await fetch (`http://127.0.0.1:8000/campaigns/${camp_ID}/milestones?limit=100&offset=0`, getCamp);
+      const all_camp= await fetch (`http://127.0.0.1:8000/campaigns/${camp_ID}/faqs?limit=100&offset=0`, getCamp);
       const store_camp = await all_camp.json()
-      setMilestoneList(store_camp)
+      setFAQList(store_camp)
       
 
       
@@ -32,24 +32,24 @@ const View_All_Milestone = () => {
     <div className='view-all'>
       <div className='button-type'>
         <button className='view' onClick={View}>View</button>
-        <a href="/edit-milestone"><button className='return'>Edit Milestone</button></a>
-        <a href="/delete-milestone"><button className='learn_more'>Delete Milestone</button></a>
+        <a href="/edit-faq"><button className='return'>Edit FAQ</button></a>
+        <a href="/delete-faq"><button className='learn_more'>Delete FAQ</button></a>
       </div>
         
         <div className='camp-box-view-item'>
-        {MilestoneList.map((item, index) => {
+        {FAQList.map((item, index) => {
             return <div>
               
               <div key={index}>
                 <div className='box-campaigns-view'>
                   <div className='heading'>
-                    <h3 className='name'>{item.title}</h3>
+                    <h3 className='name'>Question: {item.question}</h3>
+                    
                   </div>
-                  <h3>ID:{item.id}</h3>
-                  <h3>Date of creation: {item.created_at}</h3>
+                  <h3>Answer: {item.answer}</h3>
+                  <h3>ID: {item.id}</h3>
+                  <h3>Order: {item.order}</h3>
                   
-                  <h3>Description:{item.description}</h3>
-                  <h3>Deadline: {item.deadline}</h3>
                   
 
                 </div>
@@ -79,4 +79,4 @@ const View_All_Milestone = () => {
   )
 }
 
-export default View_All_Milestone
+export default View_All_FAQ

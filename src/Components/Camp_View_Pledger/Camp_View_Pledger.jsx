@@ -15,6 +15,9 @@ const Camp_View_Pledger = () => {
     const [RewardList,setRewardList] = useState([]);
     const [MilestoneList,setMilestoneList]= useState([]);
 
+  
+
+
 
     async function View()
   {
@@ -33,6 +36,7 @@ const Camp_View_Pledger = () => {
       const all_camp= await fetch (`http://127.0.0.1:8000/campaigns/${camp_id}/faqs?limit=100&offset=0`, getCamp);
       const store_camp = await all_camp.json()
       setFaqList(store_camp)
+      
       
 
       
@@ -56,6 +60,7 @@ const Camp_View_Pledger = () => {
       const store_rewards = await all_rewards.json()
       setRewardList(store_rewards)
       
+      
 
       
   }
@@ -77,6 +82,7 @@ const Camp_View_Pledger = () => {
       const all_milestones= await fetch (`http://127.0.0.1:8000/campaigns/${camp_id}/milestones?limit=100&offset=0`, getCamp);
       const store_milestones = await all_milestones.json()
       setMilestoneList(store_milestones)
+      
       
 
       
@@ -101,35 +107,9 @@ const Camp_View_Pledger = () => {
             <button onClick={View_Milestone}>Milestone</button>
         </div>
 
+
         <div className='camp-box-view-item'>
-        {FaqList.map((item, index) => {
-            return <div>
-              
-              <div key={index}>
-                <div className='box-campaigns-view'>
-                  <div className='heading'>
-                    <h3 className='name'>{item.question}</h3>
-                  </div>
-                  <h3>{item.answer}</h3>
-                  
-                  
-
-                </div>
-
-                <br />
-
-              
-
-                
-              </div>
-
-              
-
-              
-            </div>;
-            
-          })}
-
+        
         </div>
 
         <div className='camp-box-view-item'>
