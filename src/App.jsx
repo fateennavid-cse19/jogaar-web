@@ -31,6 +31,9 @@ import EditFAQ from './Components/Edit-FAQ/EditFAQ';
 import DeleteMilestone from './Components/Delete-Milestone/DeleteMilestone';
 import DeleteRewards from './Components/Delete-Rewards/DeleteRewards';
 import DeleteFAQ from './Components/Delete-FAQ/DeleteFAQ';
+import Create_Tag from './Components/Create_Tag/Create_Tag';
+import EditTag from './Components/Edit-Tag/EditTag';
+import DeleteTag from './Components/Delete-Tag/DeleteTag';
 
 import './App.css';
 import Footer from './Components/Footer/Footer';
@@ -75,6 +78,10 @@ function App() {
             <Route path='/delete-milestone' element={<DeleteMilestone />}></Route>
             <Route path='/delete-reward' element={<DeleteRewards />}></Route>
             <Route path='/delete-faq' element={<DeleteFAQ />}></Route>
+            <Route path='/tag-customization' element={<Create_Tag />}></Route>
+            <Route path='/edit-tag' element={<EditTag />}></Route>
+            <Route path='/delete-tag' element={<DeleteTag />}></Route>
+
             
           </Routes>
           

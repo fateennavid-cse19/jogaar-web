@@ -10,6 +10,23 @@ const Camp_View = () => {
     var goal_info = JSON.parse(localStorage.getItem('goal'))
     var pledged_info = JSON.parse(localStorage.getItem('pledged'))
     var camp_id= JSON.parse(localStorage.getItem('campaign_id'))
+    const [tagList,settagList]= useState([]);
+
+    async function viewTag()
+    {
+        const getTag = {
+            method: "GET",
+            headers: {
+                'accept': 'application/json'
+            }
+        }
+
+        const all_tags= await fetch (`http://127.0.0.1:8000/campaigns/${camp_id}/tags?limit=100&offset=0`, getTag);
+        const store_tag = await all_tags.json()
+        settagList(store_tag)
+
+
+    }
 
     
 
@@ -25,7 +42,37 @@ const Camp_View = () => {
         </div>
 
         <h3 className='money'>{pledged_info}&#2547; pledged out of {goal_info}&#2547;</h3>
+        <div className='side-buttons'>
+            <button onClick={viewTag} classname ="tags">Tags</button>
+            <a href="/tag-customization"><button>Create,edit or delete tag</button></a>
+        </div>
+        <div className='camp-box-view-item'>
+        {tagList.map((item, index) => {
+            return <div>
+              
+              <div key={index}>
+                
+                  <div className='heading'>
+                    <h3 className='name'>{item.name}</h3>
+                  </div>
+                  <h3>ID:{item.id}</h3>
+                  
+                  
 
+                
+
+
+                
+              </div>
+
+              
+            </div>;
+            
+          })}
+        </div>
+
+        <br /><br /><br /><br /><br />
+        
         <div className='side-buttons'>
             <a href="/view-faq"><button className='FAQ'>FAQ</button></a>
             <a href="/view-reward"><button>Rewards</button></a>

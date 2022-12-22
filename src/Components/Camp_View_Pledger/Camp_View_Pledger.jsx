@@ -14,6 +14,23 @@ const Camp_View_Pledger = () => {
     const [FaqList,setFaqList] = useState([]);
     const [RewardList,setRewardList] = useState([]);
     const [MilestoneList,setMilestoneList]= useState([]);
+    const [tagList,settagList]= useState([]);
+
+    async function viewTag()
+    {
+        const getTag = {
+            method: "GET",
+            headers: {
+                'accept': 'application/json'
+            }
+        }
+
+        const all_tags= await fetch (`http://127.0.0.1:8000/campaigns/${camp_id}/tags?limit=100&offset=0`, getTag);
+        const store_tag = await all_tags.json()
+        settagList(store_tag)
+
+
+    }
 
   
 
@@ -100,6 +117,34 @@ const Camp_View_Pledger = () => {
         </div>
 
         <h3 className='money'>{pledged_info}&#2547; pledged out of {goal_info}&#2547;</h3>
+
+        <div className='side-buttons'>
+            <button onClick={viewTag} classname ="tags">Tags</button>
+        </div>
+        <div className='camp-box-view-item'>
+        {tagList.map((item, index) => {
+            return <div>
+              
+              <div key={index}>
+                
+                  <div className='heading'>
+                    <h3 className='name'>{item.name}</h3>
+                  </div>
+                  
+                  
+                  
+
+                
+
+
+                
+              </div>
+
+              
+            </div>;
+            
+          })}
+        </div>
 
         <div className='side-buttons'>
             <button className='FAQ' onClick={View}>FAQ</button>

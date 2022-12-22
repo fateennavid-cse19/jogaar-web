@@ -12,6 +12,7 @@ const CreateCamp = () => {
     challenges: "",
     goal: "",
     deadline: "",
+    tags: ""
   })
 
   // from mamo
@@ -61,6 +62,13 @@ const CreateCamp = () => {
       placeholder: "Set Deadline",
       label: "Deadline",
     },
+    {
+      id: 6,
+      name: "name",
+      type: "text",
+      placeholder: "Set Tags",
+      label: "Tags",
+    },
   ]
 
   var date = new Date(values.deadline)
@@ -73,11 +81,7 @@ const CreateCamp = () => {
       goal: values.goal,
       deadline: date.toJSON(),
     }
-    // console.log("hello!");
-    // console.log("requestModel ->", requestModel)
-
-    // var token = JSON.parse(localStorage.getItem("token-info"))
-    //console.log(token)
+    
 
     const settings = {
       method: "POST",
@@ -89,7 +93,7 @@ const CreateCamp = () => {
       },
     }
 
-    // console.log(settings)
+    
 
     try {
       const fetchResponse = await fetch(
@@ -97,10 +101,34 @@ const CreateCamp = () => {
         settings
       )
       const result = await fetchResponse.json()
-      //console.log(result);
-      // localStorage.setItem("user-info",JSON.stringify(result))
-      // history("/")
-      if (!fetchResponse.ok) {
+      
+      localStorage.setItem("new-camp-id-info",JSON.stringify(result.id))
+      var new_camp_id = JSON.parse(localStorage.getItem("camp-id-info"))
+
+      let tagModel = {
+        tags: values.name
+      }
+
+      const addTags = {
+        method: "POST",
+        body: JSON.stringify(requestModel),
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        }
+      }
+
+      const fetchTag = await fetch (`http://127.0.0.1:8000/campaigns/${new_camp_id}/tags`)
+      const tag_result = await fetchTag.json()
+
+
+
+
+      
+      
+      
+      if (!fetchResponse.ok && !fetchTag.ok) {
         alert(
           "Campaign might not be created due to expiry of access token.Please login again to create campaign!"
         )
@@ -114,17 +142,10 @@ const CreateCamp = () => {
       return e
     }
 
-    // let result= await fetch("http://127.0.0.1:8000/users",{
-    //   method: 'POST',
-    //   body: requestModel,
-    //   headers:{
-    //     'Content-Type': 'application/json',
-    //     'accept': 'application/json'
-    //   }
-    // })
-
-    // result =await result.json()
+    
   }
+
+
 
   const handleSubmit = e => {
     // if(values.password!==values.confirm)
