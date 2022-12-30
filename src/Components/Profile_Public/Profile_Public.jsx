@@ -81,12 +81,12 @@ const Profile_Public = () => {
           <div className='box-info-item'>
             <h6>Based in</h6>
             <h3>Dhaka</h3></div>
-          <div className='box-info-item'>
-            <h6>Successful Campaigns</h6>
-            <h3>0</h3></div>
-          <div className='box-info-item'>
+            <div className='box-info-item'>
             <h6>Funded Campaigns</h6>
-            <h3>12</h3></div>
+            <a href="/view-pledged-campaigns-public"><button className='funded'>View Pledged Campaigns </button></a></div>
+          <div className='box-info-item'>
+            <h6>Bookmarked Campaigns</h6>
+            <a href="/view-bookmarked-campaigns-public"><button className='funded'>View Bookmarked Campaigns </button></a></div>
         </div>
         <div>
           <h4>Email Address: {public_email_info}</h4>

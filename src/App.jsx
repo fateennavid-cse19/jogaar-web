@@ -34,6 +34,14 @@ import DeleteFAQ from './Components/Delete-FAQ/DeleteFAQ';
 import Create_Tag from './Components/Create_Tag/Create_Tag';
 import EditTag from './Components/Edit-Tag/EditTag';
 import DeleteTag from './Components/Delete-Tag/DeleteTag';
+import MakePledge from './Components/Make-Pledge/MakePledge';
+import View_All_Pledged from './Components/View_All _Pledged/View_All_Pledged';
+import EditPledge from './Components/Edit-Pledge/EditPledge';
+import DeletePledge from './Components/Delete-Pledge/DeletePledge';
+import View_All_Pledged_Public from './Components/View_All _Pledged _Public/View_All_Pledged_Public';
+import View_All_Bookmark from './Components/View_All_Bookmark/View_All_Bookmark';
+import DeleteBookmark from './Components/Delete-Bookmark/DeleteBookmark';
+import View_All_Bookmark_Public from './Components/View_All_Bookmark_Public/View_All_Bookmark_Public';
 
 import './App.css';
 import Footer from './Components/Footer/Footer';
@@ -81,6 +89,14 @@ function App() {
             <Route path='/tag-customization' element={<Create_Tag />}></Route>
             <Route path='/edit-tag' element={<EditTag />}></Route>
             <Route path='/delete-tag' element={<DeleteTag />}></Route>
+            <Route path='/pledge-campaign' element={<MakePledge />}></Route>
+            <Route path='/view-pledged-campaigns' element={<View_All_Pledged />}></Route>
+            <Route path='/edit-pledge' element={<EditPledge />}></Route>
+            <Route path='/delete-pledge' element={<DeletePledge />}></Route>
+            <Route path='/view-pledged-campaigns-public' element={<View_All_Pledged_Public />}></Route>
+            <Route path='/view-bookmarked-campaigns' element={<View_All_Bookmark/>}></Route>
+            <Route path='/delete-bookmark' element={<DeleteBookmark/>}></Route>
+            <Route path='/view-bookmarked-campaigns-public' element={<View_All_Bookmark_Public/>}></Route>
 
             
           </Routes>

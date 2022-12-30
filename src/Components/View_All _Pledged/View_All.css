@@ -18,10 +18,14 @@
 
 .button-type{
     display: grid;
-    grid-template-columns: repeat(3,1fr) !important;
+    grid-template-columns: repeat(3,1fr);
 }
 
 .button-type-info{
     display: grid;
     grid-template-columns: repeat(2,1fr);
+}
+
+.browse{
+    margin-left: 10px;
 }

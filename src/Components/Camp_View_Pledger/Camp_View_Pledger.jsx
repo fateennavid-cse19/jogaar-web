@@ -16,6 +16,9 @@ const Camp_View_Pledger = () => {
     const [MilestoneList,setMilestoneList]= useState([]);
     const [tagList,settagList]= useState([]);
 
+
+    
+
     async function viewTag()
     {
         const getTag = {
@@ -86,11 +89,12 @@ const Camp_View_Pledger = () => {
   {
     
 
-
+      
       const getCamp ={
         method: 'GET',
         headers: {
-          'accept': 'application/json'
+          'accept': 'application/json',
+          
         }
       }
 
@@ -105,22 +109,61 @@ const Camp_View_Pledger = () => {
       
   }
 
+  async function Do_Bookmark(){
+
+    var token = JSON.parse(localStorage.getItem('token-info'))
+    const postBookmark = {
+
+      
+
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'Authorization': `Bearer ${token}`
+
+      }
+
+      
+
+
+    }
+
+    const post_bookmark = await fetch(`http://127.0.0.1:8000/campaigns/${camp_id}/bookmarks`,postBookmark)
+    
+    
+    if(!post_bookmark.ok)
+    {
+      alert("Bookmark already done for the campaign!")
+    }
+    else{
+      alert("Campaign bookmarked successfully!")
+    }
+  }
+
+  
+
   return (
     <div className='Camp_View'>
         <h1 className='heading-campaign'>{camp_title}</h1>
         <h3 className='description'>{camp_desc}</h3>
         <div classname='grid-img-and-progress'>
+            
             <img className='jafor' src={poultry} alt="" />
+            <br /><br /><br />
+            <div className='side-buttons'>
+              <button onClick={viewTag} classname ="FAQ">Tags</button>
+              <a href="/pledge-campaign"><button classname ="FAQ">Pledge Project</button></a>
+            </div>
+            
+            <br /><br /><br />
             <div className='progress-bar-big'>
                 <div className='progress-complete-big'></div>
+                
             </div>
         </div>
 
         <h3 className='money'>{pledged_info}&#2547; pledged out of {goal_info}&#2547;</h3>
 
-        <div className='side-buttons'>
-            <button onClick={viewTag} classname ="tags">Tags</button>
-        </div>
         <div className='camp-box-view-item'>
         {tagList.map((item, index) => {
             return <div>
@@ -220,7 +263,50 @@ const Camp_View_Pledger = () => {
 
         </div>
 
-        <a href="/report-campaign"><button className='report'>Report Camapign</button></a>
+
+        <div className='camp-box-view-item'>
+        {FaqList.map((item, index) => {
+            return <div>
+              
+              <div key={index}>
+                <div className='box-campaigns-view'>
+                  <div className='heading'>
+                  <h3 className='name'>Question: {item.question}</h3>
+                  </div>
+                  <h3>Answer: {item.answer}</h3>
+                  
+                  
+
+                </div>
+
+                <br /><br />
+
+              
+
+                
+              </div>
+
+
+              
+            </div>;
+            
+          })}
+
+        </div>
+
+        <br /><br /><br />
+
+        <div className='bookmark-and-report'>
+
+        <div className='side-buttons'>
+          <button className='FAQ' onClick={Do_Bookmark}>Bookmark this project</button>
+          <a href="/report-campaign"><button className='report'>Report Camapign</button></a>
+        </div>
+
+        </div>
+
+        
+        
 
         
     </div>

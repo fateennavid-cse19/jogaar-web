@@ -4,28 +4,30 @@ import Register_input from './Register_input'
 import './register.css'
 //import {useNavigate} from 'react-router-dom'
 
-const FindUser = () => {
+const DeleteBookmark = () => {
 
 
   const [values,setValues]=useState(
     {
-      ID:""
+      campaign_id:""
     }
   );
 
-  var id=JSON.parse(localStorage.getItem('id-info'))
-
   //const history =useNavigate();
 
+  
+
   const inputs=[
+    
     {
       id:1,
-      name:"ID",
+      name:"campaign_id",
       type:"text",
-      placeholder:"ID",
-      label:"Provide Campaign ID"
+      placeholder:"Campaign ID",
+      label:"Insert Specific Campaign ID:"
 
     }
+
 
     
 
@@ -35,44 +37,31 @@ const FindUser = () => {
   async function signUp()
   {
 
-    let getCamp = {
-      campaign_id: values.ID
-    }
+    
 
-    const User_info = {
-      method: 'GET',
+    
+
+    var token = JSON.parse(localStorage.getItem('token-info'))
+
+    const Edit_Pledge = {
+      method: 'DELETE',
       headers: {
-        'accept': 'application/json'
+        'accept': '*/*',
+        'Authorization': `Bearer ${token}`
       }
     }
 
-    const campaign_to_be_searched = await fetch (`http://127.0.0.1:8000/campaigns/${getCamp.campaign_id}`,User_info)
-    const store_campaign = await campaign_to_be_searched.json()
-    localStorage.setItem("campaign_name",JSON.stringify(store_campaign.title))
-    localStorage.setItem("campaign_description",JSON.stringify(store_campaign.description))
-    localStorage.setItem("challenges", JSON.stringify(store_campaign.challenges));
-    localStorage.setItem("campaign_id", JSON.stringify(store_campaign.id));
-    localStorage.setItem("campaigner_id",JSON.stringify(store_campaign.campaigner_id));
-    localStorage.setItem("goal",JSON.stringify(store_campaign.goal));
-    localStorage.setItem("pledged",JSON.stringify(store_campaign.pledged));
-
-    
-    var campaigner_id = JSON.parse(localStorage.getItem('campaigner_id'))
-    if(campaigner_id==id)
+    const pledged_camp = await fetch (`http://127.0.0.1:8000/campaigns/${values.campaign_id}/bookmarks`,Edit_Pledge)
+    if(!pledged_camp.ok)
     {
-       window.location.assign('http://localhost:3000/view-campaign');
+      alert("Error in deleted bookmark!")
+      window.location.assign("http://localhost:3000/delete-bookamrk");
     }
     else{
-      window.location.assign('http://localhost:3000/view-campaign-pledger');
+      alert("Bookmark Deleted successfully")
+      window.location.assign("http://localhost:3000/view-bookmarked-campaigns");
+      
     }
-
-    
-
-    //var found_user_info=localStorage.getItem("found_user")
-    //alert(found_user_info)
-
-
-    
     
      
   
@@ -113,13 +102,13 @@ const FindUser = () => {
   console.log(values)
   return (
     <div className='login'>
-      <h1><b>Find a campaign</b></h1>
+      <h1><b>Delete a bookmark</b></h1>
         <form onSubmit={handleSubmit}>
           
           {inputs?.map((input)=>(
             <Register_input key={input.id} {...input} value={values[input?.name]} onChange={onChange} />
           ))}
-          <br /><button className='signup' onClick={signUp}>Find campaign</button><br /><br />
+          <br /><button className='signup' onClick={signUp}>Delete Bookmark</button><br /><br />
           {/* <p className='info'>By Signing up, you agree to our <a className="privacy_policy" href="/privacy_policy">Privacy Policy</a> and <a className='terms_of_use' href="/terms_of_use">Terms of Use</a></p>
           <br />
           <p className='choice'>Already have an account? <a className="login" href="/login">Log In</a></p> */}
@@ -128,4 +117,4 @@ const FindUser = () => {
   )
 }
 
-export default FindUser
+export default DeleteBookmark

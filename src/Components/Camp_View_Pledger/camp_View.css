@@ -12,7 +12,7 @@
 
 .grid-img-and-progress{
     display: grid !important;
-    grid-template-columns: repeat(2,1fr) !important;
+    grid-template-columns: repeat(3,1fr) !important;
 }
 
 .progress-bar-big{
@@ -51,4 +51,9 @@
     color:black;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 20px;
+}
+
+.bookmark-and-report{
+    margin-left: 500px;
+    margin-right: 20px;
 }
