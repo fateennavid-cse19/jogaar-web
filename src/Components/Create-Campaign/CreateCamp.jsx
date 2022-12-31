@@ -61,14 +61,7 @@ const CreateCamp = () => {
       type: "date",
       placeholder: "Set Deadline",
       label: "Deadline",
-    },
-    {
-      id: 6,
-      name: "name",
-      type: "text",
-      placeholder: "Set Tags",
-      label: "Tags",
-    },
+    }
   ]
 
   var date = new Date(values.deadline)
@@ -103,24 +96,10 @@ const CreateCamp = () => {
       const result = await fetchResponse.json()
       
       localStorage.setItem("new-camp-id-info",JSON.stringify(result.id))
-      var new_camp_id = JSON.parse(localStorage.getItem("camp-id-info"))
+      var new_camp_id = JSON.parse(localStorage.getItem("new-camp-id-info"))
+      // alert(new_camp_id)
 
-      let tagModel = {
-        tags: values.name
-      }
-
-      const addTags = {
-        method: "POST",
-        body: JSON.stringify(requestModel),
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        }
-      }
-
-      const fetchTag = await fetch (`http://127.0.0.1:8000/campaigns/${new_camp_id}/tags`)
-      const tag_result = await fetchTag.json()
+      
 
 
 
@@ -128,7 +107,7 @@ const CreateCamp = () => {
       
       
       
-      if (!fetchResponse.ok && !fetchTag.ok) {
+      if (!fetchResponse.ok) {
         alert(
           "Campaign might not be created due to expiry of access token.Please login again to create campaign!"
         )

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./camp_View.css"
 import poultry from "../../Images/poultry.png"
 import { useState } from 'react'
+import Uploader from "../Uploader"
 
 const Camp_View = () => {
 
@@ -10,7 +11,24 @@ const Camp_View = () => {
     var goal_info = JSON.parse(localStorage.getItem('goal'))
     var pledged_info = JSON.parse(localStorage.getItem('pledged'))
     var camp_id= JSON.parse(localStorage.getItem('campaign_id'))
+    var image_id = JSON.parse(localStorage.getItem('picture-id'))
     const [tagList,settagList]= useState([]);
+    const [Photos,setPhotos]= useState([]);
+
+    async function viewPhoto()
+    {
+      const getPhoto ={
+        method: "GET",
+        headers: {
+          'accept': 'application/json'
+        }
+      }
+      const all_photo= await fetch (`http://127.0.0.1:8000/images/${image_id}`, getPhoto);
+      const store_photo = await all_photo.json()
+      console.log(store_photo)
+      setPhotos(store_photo)
+
+    }
 
     async function viewTag()
     {
@@ -34,8 +52,39 @@ const Camp_View = () => {
     <div className='Camp_View'>
         <h1 className='heading-campaign'>{camp_title}</h1>
         <h3 className='description'>{camp_desc}</h3>
+        <button onClick={viewPhoto}>View Photo</button>
+
+
+        {Photos.map((photo) => {
+            return <div>
+
+            
+              
+                  <img className='jafor' src={photo["item.location"]}></img>
+              
+              
+              
+                
+              
+                  
+                  
+
+                
+
+
+                
+              
+
+              
+            </div>;
+            
+          })}
+
+
+
+
         <div classname='grid-img-and-progress'>
-            <img className='jafor' src={poultry} alt="" />
+            
             <div className='progress-bar-big'>
                 <div className='progress-complete-big'></div>
             </div>
