@@ -42,6 +42,9 @@ import View_All_Pledged_Public from './Components/View_All _Pledged _Public/View
 import View_All_Bookmark from './Components/View_All_Bookmark/View_All_Bookmark';
 import DeleteBookmark from './Components/Delete-Bookmark/DeleteBookmark';
 import View_All_Bookmark_Public from './Components/View_All_Bookmark_Public/View_All_Bookmark_Public';
+import Feed from './Components/Feed/Feed';
+import FindCamp from './Components/Campaign_Search/Camp_Search';
+
 
 import './App.css';
 import Footer from './Components/Footer/Footer';
@@ -97,6 +100,9 @@ function App() {
             <Route path='/view-bookmarked-campaigns' element={<View_All_Bookmark/>}></Route>
             <Route path='/delete-bookmark' element={<DeleteBookmark/>}></Route>
             <Route path='/view-bookmarked-campaigns-public' element={<View_All_Bookmark_Public/>}></Route>
+            <Route path='/feed' element={<Feed/>}></Route>
+            <Route path='/search' element={<FindCamp />}></Route>
+            
 
             
           </Routes>

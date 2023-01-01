@@ -14,6 +14,12 @@ const Camp_View = () => {
     var image_id = JSON.parse(localStorage.getItem('picture-id'))
     const [tagList,settagList]= useState([]);
     const [Photos,setPhotos]= useState([]);
+    const [token, setToken] = useState(null)
+    const [coverID, setCoverID] = useState(null)
+
+    useEffect(() => {
+      setToken(JSON.parse(localStorage.getItem("token-info")))
+    }, [])
 
     async function viewPhoto()
     {
@@ -25,10 +31,13 @@ const Camp_View = () => {
       }
       const all_photo= await fetch (`http://127.0.0.1:8000/images/${image_id}`, getPhoto);
       const store_photo = await all_photo.json()
+      localStorage.setItem("photo-location-info",JSON.stringify(store_photo.location))
       console.log(store_photo)
       setPhotos(store_photo)
 
     }
+
+    var photo_location = JSON.parse(localStorage.getItem("photo-location-info"))
 
     async function viewTag()
     {
@@ -55,36 +64,15 @@ const Camp_View = () => {
         <button onClick={viewPhoto}>View Photo</button>
 
 
-        {Photos.map((photo) => {
-            return <div>
-
-            
-              
-                  <img className='jafor' src={photo["item.location"]}></img>
-              
-              
-              
-                
-              
-                  
-                  
-
-                
-
-
-                
-              
-
-              
-            </div>;
-            
-          })}
-
+        
 
 
 
         <div classname='grid-img-and-progress'>
-            
+          <img src={require("../../Images/poultry.png")} className='jafor' alt="" />
+          {/* <img src={require("static/images/22/2-bryl26art-toyota-ae86-fan-art-blanco.jpg")} className='jafor' alt="" /> */}
+          
+          {/* <img src={require(photo_location)} className='jafor' alt="" /> */}
             <div className='progress-bar-big'>
                 <div className='progress-complete-big'></div>
             </div>
