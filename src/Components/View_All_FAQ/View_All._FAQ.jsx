@@ -32,7 +32,7 @@ const View_All_FAQ = () => {
     <div className='view-all'>
       <div className='button-type'>
         <button className='view' onClick={View}>View</button>
-        <a href="/edit-faq"><button className='return'>Edit FAQ</button></a>
+        <a href="/create-faq"><button className='return'>Create or edit FAQ</button></a>
         <a href="/delete-faq"><button className='learn_more'>Delete FAQ</button></a>
       </div>
         

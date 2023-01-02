@@ -156,6 +156,10 @@ const CreateRewards = () => {
           <br />
           <p className='choice'>Already have an account? <a className="login" href="/login">Log In</a></p> */}
       </form>
+
+      <a href="/edit-reward"><button>
+          Edit a reward
+        </button></a>
     </div>
   )
 }

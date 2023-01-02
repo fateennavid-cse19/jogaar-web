@@ -32,7 +32,7 @@ const View_All_Milestone = () => {
     <div className='view-all'>
       <div className='button-type'>
         <button className='view' onClick={View}>View</button>
-        <a href="/edit-milestone"><button className='return'>Edit Milestone</button></a>
+        <a href="/create-milestone"><button className='return'>Create or edit Milestone</button></a>
         <a href="/delete-milestone"><button className='learn_more'>Delete Milestone</button></a>
       </div>
         

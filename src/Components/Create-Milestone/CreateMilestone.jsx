@@ -169,6 +169,10 @@ const CreateMilestone = () => {
           <br />
           <p className='choice'>Already have an account? <a className="login" href="/login">Log In</a></p> */}
       </form>
+
+      <a href="/edit-milestone"><button>
+          Edit a milestone
+        </button></a>
     </div>
   )
 }

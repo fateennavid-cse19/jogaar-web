@@ -5,12 +5,11 @@ import "./register.css"
 import Register_input from "./Register_input"
 //import {useNavigate} from 'react-router-dom'
 
-const CreateFAQ = () => {
+const CreateReply = () => {
 
   const [values, setValues] = useState({
-    question: "",
-    answer: "",
-    order: ""
+    content: "",
+    update_id:""
   })
 
   // from mamo
@@ -20,53 +19,39 @@ const CreateFAQ = () => {
     setToken(JSON.parse(localStorage.getItem("token-info")))
   }, [])
 
+  var camp_id= JSON.parse(localStorage.getItem('campaign_id'))
+
   //const history =useNavigate();
 
   const inputs = [
+   
+
     {
       id: 1,
-      name: "question",
+      name: "content",
       type: "text",
-      placeholder: "Question",
-      label: "Question",
+      placeholder: "Content",
+      label: "Content",
     },
-
     {
       id: 2,
-      name: "answer",
+      name: "update_id",
       type: "text",
-      placeholder: "Answer",
-      label: "Answer",
-    },
-    {
-      id: 3,
-      name: "order",
-      type: "number",
-      placeholder: "Order",
-      label: "Order",
-    },
-    {
-      id:4,
-      name:"camp_id",
-      type:"text",
-      placeholder:"Campaign ID",
-      label:"Give Specific Campaign ID"
-
+      placeholder: "Update ID",
+      label: "Update ID",
     }
   ]
+
+
 
   
 
   async function signUp() {
     let requestModel = {
-      question : values.question,
-      answer: values.answer,
-      order: values.order
+      content: values.content
     }
 
-    let getCamp = {
-      camp_id: values.camp_id
-    }
+    
     // console.log("hello!");
     // console.log("requestModel ->", requestModel)
 
@@ -87,7 +72,7 @@ const CreateFAQ = () => {
 
     try {
       const fetchResponse = await fetch(
-        `http://127.0.0.1:8000/campaigns/${getCamp.camp_id}/faqs`,
+        `http://127.0.0.1:8000/updates/${values.update_id}/replies`,
         settings
       )
       const result = await fetchResponse.json()
@@ -96,12 +81,12 @@ const CreateFAQ = () => {
       // history("/")
       if (!fetchResponse.ok) {
         alert(
-          "FAQ not created!Token might be expired"
+          "Reply not created!Token might be expired"
         )
         window.location.assign("http://localhost:3000/login")
       } else {
-        alert("FAQ created successfully!")
-        window.location.assign("http://localhost:3000/view-campaign")
+        alert("Reply created successfully!")
+        window.location.assign("http://localhost:3000/replies")
       }
       return result
     } catch (e) {
@@ -142,7 +127,7 @@ const CreateFAQ = () => {
   return (
     <div className="login">
       <h1>
-        <b>Make a FAQ</b>
+        <b>Make a Reply</b>
       </h1>
 
       {/* from mamo */}
@@ -159,7 +144,7 @@ const CreateFAQ = () => {
         ))}
         <br />
         <button className="signup" onClick={signUp}>
-          Make a FAQ
+          Make Reply
         </button>
         <br />
         <br />
@@ -167,12 +152,8 @@ const CreateFAQ = () => {
           <br />
           <p className='choice'>Already have an account? <a className="login" href="/login">Log In</a></p> */}
       </form>
-
-      <a href="/edit-faq"><button>
-          Edit a FAQ
-        </button></a>
     </div>
   )
 }
 
-export default CreateFAQ
+export default CreateReply

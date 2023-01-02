@@ -10,13 +10,28 @@ const Camp_View_Pledger = () => {
     var goal_info = JSON.parse(localStorage.getItem('goal'))
     var pledged_info = JSON.parse(localStorage.getItem('pledged'))
     var camp_id= JSON.parse(localStorage.getItem('campaign_id'))
+    const [updateList,setupdateList]= useState([]);
 
     const [FaqList,setFaqList] = useState([]);
     const [RewardList,setRewardList] = useState([]);
     const [MilestoneList,setMilestoneList]= useState([]);
     const [tagList,settagList]= useState([]);
 
+    async function readUpdate()
+    {
+      const getUpdate ={
+        method: "GET",
+        headers: {
+          'accept':'application/json'
+        }
+      }
 
+      const all_updates= await fetch (`http://127.0.0.1:8000/campaigns/${camp_id}/updates?limit=100&offset=0`, getUpdate);
+      const store_updates = await all_updates.json()
+      
+      setupdateList(store_updates)
+
+    }
     
 
     async function viewTag()
@@ -291,6 +306,51 @@ const Camp_View_Pledger = () => {
             </div>;
             
           })}
+
+        </div>
+
+
+
+        <br /><br /><br />
+        <h1 className='social-updates' onClick={readUpdate}>Social Updates</h1>
+        <div className='camp-box-view-item'>
+        {updateList.map((item, index) => {
+            return <div>
+              
+              <div key={index}>
+                <div className='box-campaigns-view'>
+                  <div className='heading'>
+                    <h3 className='name'>{item.title}</h3>
+                  </div>
+                  <h3>{item.content}</h3>
+                  <h3>ID:{item.id}</h3>
+                  <h3>Date of creation: {item.created_at}</h3>
+                  <div className='heading'>
+                    <a href="/replies"><h3 className='name'>Read Replies</h3></a>
+                  </div>
+                  
+                  
+
+                </div>
+
+                <br /><br />
+
+                
+              </div>
+
+              
+            </div>;
+            
+          })}
+
+          <div>
+
+          
+
+          
+
+
+          </div>
 
         </div>
 

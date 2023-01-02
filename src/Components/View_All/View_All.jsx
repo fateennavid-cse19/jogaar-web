@@ -53,7 +53,8 @@ const View_All = () => {
                   <h3>Deadline: {item.deadline}</h3>
                   <h3>Challenges: {item.challenges}</h3>
                   <h3>Current_state: {item.current_state}</h3>
-                  
+                  <a href="/find-campaign"><button className='browse'>Browse Campaign</button></a>
+                  <a href="/start-campaign"><button className='browse'>Start Campaign</button></a>
 
                 </div>
 

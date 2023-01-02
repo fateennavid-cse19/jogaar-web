@@ -44,7 +44,16 @@ import DeleteBookmark from './Components/Delete-Bookmark/DeleteBookmark';
 import View_All_Bookmark_Public from './Components/View_All_Bookmark_Public/View_All_Bookmark_Public';
 import Feed from './Components/Feed/Feed';
 import FindCamp from './Components/Campaign_Search/Camp_Search';
-
+import EditUpdate from './Components/Edit-Update/EditUpdate';
+import DeleteUpdate from './Components/Delete-Update/DeleteUpdate';
+import ReadReply from './Components/Read_Replies/ReadReply';
+import EditReply from './Components/Edit-Reply/EditReply';
+import DeleteReply from './Components/Delete-Reply/DeleteReply';
+import CastVote from './Components/Cast-Vote/CastVote';
+import DeleteVote from './Components/Delete-Vote/DeleteVote';
+import CreateUpdate from './Components/Create-Update/CreateUpdate';
+import CreateReply from './Components/Create-Reply/CreateReply';
+import StartCamp from './Components/Start-Campaign/StartCamp';
 
 import './App.css';
 import Footer from './Components/Footer/Footer';
@@ -102,6 +111,16 @@ function App() {
             <Route path='/view-bookmarked-campaigns-public' element={<View_All_Bookmark_Public/>}></Route>
             <Route path='/feed' element={<Feed/>}></Route>
             <Route path='/search' element={<FindCamp />}></Route>
+            <Route path='/edit-and-delete-update' element={<EditUpdate />}></Route>
+            <Route path='/delete-update' element={<DeleteUpdate />}></Route>
+            <Route path='/replies' element={<ReadReply />}></Route>
+            <Route path='/edit-reply' element={<EditReply />}></Route>
+            <Route path='/delete-reply' element={<DeleteReply />}></Route>
+            <Route path='/vote' element={<CastVote />}></Route>
+            <Route path='/delete-vote' element={<DeleteVote />}></Route>
+            <Route path='/create-update' element={<CreateUpdate />}></Route>
+            <Route path='/create-reply' element={<CreateReply />}></Route>
+            <Route path='/start-campaign' element={<StartCamp />}></Route>
             
 
             

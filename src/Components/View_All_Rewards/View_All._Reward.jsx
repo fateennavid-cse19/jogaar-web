@@ -32,7 +32,7 @@ const View_All_Reward = () => {
     <div className='view-all'>
       <div className='button-type'>
         <button className='view' onClick={View}>View</button>
-        <a href="/edit-reward"><button className='return'>Edit Rewards</button></a>
+        <a href="/create-reward"><button className='return'>Create or edit reward</button></a>
         <a href="/delete-reward"><button className='learn_more'>Delete Rewards</button></a>
       </div>
         
