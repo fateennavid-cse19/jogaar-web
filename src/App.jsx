@@ -54,6 +54,7 @@ import DeleteVote from './Components/Delete-Vote/DeleteVote';
 import CreateUpdate from './Components/Create-Update/CreateUpdate';
 import CreateReply from './Components/Create-Reply/CreateReply';
 import StartCamp from './Components/Start-Campaign/StartCamp';
+import BanUser from './Components/Ban-User/BanUser';
 
 import './App.css';
 import Footer from './Components/Footer/Footer';
@@ -121,6 +122,7 @@ function App() {
             <Route path='/create-update' element={<CreateUpdate />}></Route>
             <Route path='/create-reply' element={<CreateReply />}></Route>
             <Route path='/start-campaign' element={<StartCamp />}></Route>
+            <Route path='/ban-user' element={<BanUser />}></Route>
             
 
             

@@ -44,6 +44,7 @@ export default function Uploader({ token, handleData }) {
     let data = await resp.json()
     setUploadedFile(data)
     handleData(data)
+    localStorage.setItem("picture-id",JSON.stringify(data.id))
   }
 
   const show_image = () => {

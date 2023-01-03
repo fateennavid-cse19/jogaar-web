@@ -94,6 +94,7 @@ const Profile = () => {
         <div>
           <h4>Email Address: {email_info}</h4>
           <h4>Date of creating account: {date} </h4>
+          <h4>UserID: {id}</h4>
         </div>
 
         <div>

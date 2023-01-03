@@ -3,6 +3,7 @@ import "./camp_View.css"
 import poultry from "../../Images/poultry.png"
 import { useState } from 'react'
 import Uploader from "../Uploader"
+import { useNavigate } from 'react-router-dom'
 
 const Camp_View = () => {
 
@@ -14,31 +15,67 @@ const Camp_View = () => {
     var image_id = JSON.parse(localStorage.getItem('picture-id'))
     const [tagList,settagList]= useState([]);
     const [updateList,setupdateList]= useState([]);
-    const [Photos,setPhotos]= useState([]);
+    // const [Photos,setPhotos]= useState([]);
     const [token, setToken] = useState(null)
     const [coverID, setCoverID] = useState(null)
+    const [selectedFile, setSelectedFile] = useState(null)
+    const [uploadedFile, setUploadedFile] = useState(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
       setToken(JSON.parse(localStorage.getItem("token-info")))
     }, [])
 
-    async function viewPhoto()
-    {
-      const getPhoto ={
-        method: "GET",
-        headers: {
-          'accept': 'application/json'
-        }
-      }
-      const all_photo= await fetch (`http://127.0.0.1:8000/images/${image_id}`, getPhoto);
-      const store_photo = await all_photo.json()
-      localStorage.setItem("photo-location-info",JSON.stringify(store_photo.location))
-      console.log(store_photo)
-      setPhotos(store_photo)
-
+    const handleChange = event => {
+      setSelectedFile(event.target.files[0])
     }
 
-    // var photo_location = JSON.parse(localStorage.getItem("photo-location-info"))
+    const handleSubmit = async event => {
+      event.preventDefault()
+  
+      // <PSA>
+      const formData = new FormData()
+      // *** snippet from backend ***
+      // async def upload_image(
+      //     file: UploadFile = File(),
+      //     ^^^^--------------------------------------------- note the parameter name from this handler
+      // ...
+      formData.append("file", selectedFile, selectedFile.name)
+      //               ^^^^----------------------------------- upload will fail if these two don't match
+      // </PSA>
+  
+      const requestOptions = {
+        // https://muffinman.io/blog/uploading-files-using-fetch-multipart-form-data/
+        method: "GET",
+        body: formData,
+        headers: {
+          Accept: "application/json"
+        }
+      }
+  
+      let resp = await fetch("http://127.0.0.1:8000/images/${image_id}", requestOptions)
+      if (!resp.ok) {
+        alert("Something went wrong. Try logging in again.")
+        navigate("/login")
+      }
+  
+      let data = await resp.json()
+      setUploadedFile(data)
+      // handleData(data)
+    }
+
+    const show_image = () => {
+      // console.log(uploadedFile)
+      return uploadedFile?.location ? (
+        <img
+          style={{ maxHeight: 420, maxWidth: "100%" }}
+          src={`http://127.0.0.1:8000/${uploadedFile?.location}`}
+          alt="uploaded file"
+        />
+      ) : (
+        <></>
+      )
+    }
 
     async function viewTag()
     {
@@ -91,6 +128,7 @@ const Camp_View = () => {
 
         <div classname='grid-img-and-progress'>
           <img src={require("../../Images/poultry.png")} className='jafor' alt="" />
+          {show_image()}
           {/* <img src={require("static/images/22/2-bryl26art-toyota-ae86-fan-art-blanco.jpg")} className='jafor' alt="" /> */}
           
           {/* <img src={require(photo_location)} className='jafor' alt="" /> */}

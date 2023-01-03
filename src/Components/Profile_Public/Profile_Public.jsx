@@ -91,6 +91,7 @@ const Profile_Public = () => {
         <div>
           <h4>Email Address: {public_email_info}</h4>
           <h4>Date of creating account: {public_date_info} </h4>
+          <h4>Public User ID: {public_user_id} </h4>
         </div>
 
         <div>
@@ -153,7 +154,13 @@ const Profile_Public = () => {
         <a href="/feed"><button className='return'>Return to feed</button></a>
         <a href="/profile"><button className='learn_more'>Return to Profile</button></a>
         
-      </div></>
+        
+        
+      </div>
+      <br /><br />
+      <a href="/ban-user"><button className='learn_more'>Ban User</button></a>
+      
+      </>
 
         
       
