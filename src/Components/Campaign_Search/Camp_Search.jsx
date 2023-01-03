@@ -9,7 +9,8 @@ const FindCamp = () => {
 
   const [values,setValues]=useState(
     {
-      title:""
+      title:"",
+      tag:""
     }
   );
 
@@ -25,6 +26,14 @@ const FindCamp = () => {
       placeholder:"Title",
       label:"Provide Campaign Title"
 
+    },
+    {
+      id:2,
+      name:"tag",
+      type:"text",
+      placeholder:"Tag",
+      label:"Provide Campaign Tag"
+
     }
 
     
@@ -38,7 +47,8 @@ const FindCamp = () => {
   {
 
     let getCamp = {
-      campaign_title: values.title
+      campaign_title: values.title,
+      campaign_tag: values.tag
     }
 
     const User_info = {
@@ -48,7 +58,7 @@ const FindCamp = () => {
       }
     }
 
-    const campaign_to_be_searched = await fetch (`http://127.0.0.1:8000/search/campaigns?title=${getCamp.campaign_title}&limit=100&offset=0`,User_info)
+    const campaign_to_be_searched = await fetch (`http://127.0.0.1:8000/search/campaigns?title=${getCamp.campaign_title}&&tags=${getCamp.campaign_tag}&limit=100&offset=0`,User_info)
     const store_campaign = await campaign_to_be_searched.json()
     setSearchList(store_campaign)
 
