@@ -10,7 +10,7 @@ const Feed = () => {
     const [RecommndedList,setRecommendedList] = useState([]);
     const [FeaturedList,setFeaturedList] = useState([]);
     const [NewsList,setNewsList] = useState([]);
-    const [StatList,setStatList] = useState([]);
+    
     useEffect(() => {
         setToken(JSON.parse(localStorage.getItem("token-info")))
       }, [])
@@ -68,22 +68,6 @@ const Feed = () => {
         setFeaturedList(store_featured)
     }
 
-    async function Stats()
-      {
-          const getStats = {
-              method: "GET",
-              headers: {
-                  'accept': 'application/json'
-              }
-          }
-  
-          const all_stats= await fetch (`http://127.0.0.1:8000/stats`, getStats);
-          const store_stats = await all_stats.json()
-          setStatList(store_stats)
-
-          
-          
-      }
     
 
 
@@ -233,51 +217,7 @@ const Feed = () => {
         </div>
 
 
-        <div className='border-divide'>
-            <div classname='grid-text-and-buttons'>
-                <h1 className='welcome-title' onClick={Stats}>Stats</h1>
-                <div className='camp-box-item'>
-
-                {StatList.map((item, index) => {
-            return <div>
-              
-              <div key={index}>
-              <div className='box-campaigns-view-featured'>
-
-              <div className='heading'>
-                    
-                  </div>
-		          <h3>Successes: {item.successes}</h3>
-              </div>
-
-              
-                  
-                  
-
-                
-
-                <br /><br />
-
-                
-              </div>
-
-              
-            </div>;
-            
-          })}
-
-                </div>
-                
-                
-            </div>
-
-
-            
-
-            
-            
-        </div>
-
+        
         
     </div>
   )
